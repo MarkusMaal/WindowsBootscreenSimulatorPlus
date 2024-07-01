@@ -1,0 +1,75 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="WindowsBootscreenSimulatorPlus.MainWindow"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}" Icon="/Resources/logo.png"
+        Title="Windows Bootscreen Simulator Plus 0.0 pre-alpha" Height="450" Width="800"
+        Style="{StaticResource MaterialDesignWindow}">
+
+    <Grid>
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="212">
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                            DockPanel.Dock="Top"
+                            HorizontalAlignment="Right" Margin="16"
+                            IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                    <Menu>
+                        <Menu.Resources>
+                        </Menu.Resources>
+                        <Menu.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </Menu.ItemsPanel>
+                        <MenuItem Header="Simulator">
+                        </MenuItem>
+                        <MenuItem Header="Settings">
+                        </MenuItem>
+                        <MenuItem Header="About">
+                        </MenuItem>
+                    </Menu>
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <materialDesign:ColorZone Padding="16" 
+                                    Mode="PrimaryMid" DockPanel.Dock="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                Name="MenuToggleButton" Grid.Column="0"/>
+                    </Grid>
+                </materialDesign:ColorZone>
+                <Grid Grid.Row="0">
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="Segoe UI Semilight">Windows Bootscreen Simulator Plus</Label>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel>
+                        <ComboBox Padding="10,5" Margin="10" Name="OsList" SelectedIndex="0"/>
+                        <StackPanel Orientation="Horizontal" Margin="10" >
+                            <CheckBox Name="StretchBox" Content="Stretch" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0"/>
+                            <CheckBox Name="FullscreenBox" Content="Fullscreen" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button Content="Simulate" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="30" Width="100" Click="Button_Click"/>
+                </Grid>
+            </Grid>
+        </materialDesign:DrawerHost>
+    </Grid>
+</Window>
