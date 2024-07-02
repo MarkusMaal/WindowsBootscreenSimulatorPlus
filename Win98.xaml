@@ -13,7 +13,7 @@
        RenderOptions.BitmapScalingMode="NearestNeighbor">
         <Grid Width="640" Height="400">
             <StackPanel Width="1280">
-                <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="393" Source="/Resources/Windows-98-4.10.1998-Boot.png" Stretch="None" Width="640"/>
+                <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="393" Source="/Resources/Windows-98-4.10.1998-Boot.png" Stretch="UniformToFill" Width="640"/>
                 <StackPanel MinWidth="1280" Orientation="Horizontal" Name="Slit" HorizontalAlignment="Left">
                     <Image Source="/Resources/slit.png" HorizontalAlignment="Stretch" Height="7" Margin="0" />
                     <Image Source="/Resources/slit.png" HorizontalAlignment="Stretch" Height="7" Margin="-1,0,0,0" />

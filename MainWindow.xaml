@@ -8,17 +8,19 @@
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="WindowsBootscreenSimulatorPlus.MainWindow"
         mc:Ignorable="d" Loaded="Window_Loaded"
+        xmlns:uc="clr-namespace:WindowsBootscreenSimulatorPlus"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}" Icon="/Resources/logo.png"
         Title="Windows Bootscreen Simulator Plus 0.0 pre-alpha" Height="450" Width="800"
-        Style="{StaticResource MaterialDesignWindow}">
+        Style="{StaticResource MaterialDesignWindow}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Grid>
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel MinWidth="212">
                     <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
-                            DockPanel.Dock="Top"
+                            DockPanel.Dock="Top" Name="ToggleArrow"
                             HorizontalAlignment="Right" Margin="16"
                             IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <Menu>
@@ -29,11 +31,11 @@
                                 <VirtualizingStackPanel />
                             </ItemsPanelTemplate>
                         </Menu.ItemsPanel>
-                        <MenuItem Header="Simulator">
+                        <MenuItem Header="Simulator" Click="TabSwitch">
                         </MenuItem>
-                        <MenuItem Header="Settings">
+                        <MenuItem Header="Settings" Click="TabSwitch">
                         </MenuItem>
-                        <MenuItem Header="About">
+                        <MenuItem Header="About" Click="TabSwitch">
                         </MenuItem>
                     </Menu>
                 </DockPanel>
@@ -59,15 +61,14 @@
                 <Grid Grid.Row="0">
                     <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="Segoe UI Semilight">Windows Bootscreen Simulator Plus</Label>
                 </Grid>
-                <Grid Grid.Row="1">
-                    <StackPanel>
-                        <ComboBox Padding="10,5" Margin="10" Name="OsList" SelectedIndex="0"/>
-                        <StackPanel Orientation="Horizontal" Margin="10" >
-                            <CheckBox Name="StretchBox" Content="Stretch" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0"/>
-                            <CheckBox Name="FullscreenBox" Content="Fullscreen" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <Button Content="Simulate" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="30" Width="100" Click="Button_Click"/>
+                <Grid Grid.Row="1" Name="UIMain">
+                    <uc:MainView x:Name="Mw1" Simulators="{Binding Simulators}" />
+                </Grid>
+                <Grid Grid.Row="1" Visibility="Hidden" Name="Settings">
+                    <uc:Test Text="Settings"></uc:Test>
+                </Grid>
+                <Grid Grid.Row="1" Visibility="Hidden" Name="About">
+                    <uc:Test Text="About"></uc:Test>
                 </Grid>
             </Grid>
         </materialDesign:DrawerHost>

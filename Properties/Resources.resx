@@ -127,4 +127,7 @@
   <data name="Windows-98-4.10.1998-Boot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Windows-98-4.10.1998-Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Windows_ME_4_90_3000_Boot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows-ME-4.90.3000-Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

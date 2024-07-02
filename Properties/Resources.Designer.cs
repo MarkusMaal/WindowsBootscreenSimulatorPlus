@@ -89,5 +89,15 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Windows_ME_4_90_3000_Boot {
+            get {
+                object obj = ResourceManager.GetObject("Windows_ME_4_90_3000_Boot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
