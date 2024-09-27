@@ -45,5 +45,10 @@ namespace WindowsBootscreenSimulatorPlus
             parent = ((MainWindow)Window.GetWindow(this.Parent));
             RootGrid.Background = parent.Background;
         }
+
+        private void OsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            parent?.OsSwitch();
+        }
     }
 }

@@ -11,6 +11,11 @@
   <ItemGroup>
     <None Remove="Resources\logo.png" />
     <None Remove="Resources\slit.png" />
+    <None Remove="Resources\slit2k.png" />
+    <None Remove="Resources\slit2kServer.png" />
+    <None Remove="Resources\Windows-2000-CopyProgress.png" />
+    <None Remove="Resources\Windows-2000-Pro.png" />
+    <None Remove="Resources\Windows-2000-Server.png" />
     <None Remove="Resources\Windows-98-4.10.1998-Boot.png" />
   </ItemGroup>
 
@@ -21,6 +26,11 @@
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
     <Resource Include="Resources\slit.png" />
+    <Resource Include="Resources\slit2k.png" />
+    <Resource Include="Resources\slit2kServer.png" />
+    <Resource Include="Resources\Windows-2000-CopyProgress.png" />
+    <Resource Include="Resources\Windows-2000-Pro.png" />
+    <Resource Include="Resources\Windows-2000-Server.png" />
     <Resource Include="Resources\Windows-98-4.10.1998-Boot.png" />
   </ItemGroup>
 

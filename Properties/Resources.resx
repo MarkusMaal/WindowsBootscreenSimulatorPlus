@@ -130,4 +130,21 @@
   <data name="Windows_ME_4_90_3000_Boot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Windows-ME-4.90.3000-Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Windows-2000-Pro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows-2000-Pro.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Windows-2000-CopyProgress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows-2000-CopyProgress.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="slit2k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slit2k.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Windows-2000-Server" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows-2000-Server.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Server boot logo</comment>
+  </data>
+  <data name="slit2kserver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slit2kServer.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Server intermediate bar</comment>
+  </data>
 </root>

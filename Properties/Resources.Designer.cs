@@ -83,6 +83,56 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] slit2k {
+            get {
+                object obj = ResourceManager.GetObject("slit2k", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] slit2kserver {
+            get {
+                object obj = ResourceManager.GetObject("slit2kserver", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Windows_2000_CopyProgress {
+            get {
+                object obj = ResourceManager.GetObject("Windows-2000-CopyProgress", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Windows_2000_Pro {
+            get {
+                object obj = ResourceManager.GetObject("Windows-2000-Pro", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Windows_2000_Server {
+            get {
+                object obj = ResourceManager.GetObject("Windows-2000-Server", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Windows_98_4_10_1998_Boot {
             get {
                 object obj = ResourceManager.GetObject("Windows-98-4.10.1998-Boot", resourceCulture);

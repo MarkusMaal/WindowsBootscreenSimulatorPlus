@@ -1,0 +1,31 @@
+﻿<Window x:Class="WindowsBootscreenSimulatorPlus.Win2k"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus" Icon="/Resources/logo.png" Closed="Window_Closed"
+        mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" KeyDown="Window_KeyDown"
+        Title="Windows 2000 Bootscreen Simulator" Height="480" Width="640" MouseDoubleClick="Window_MouseDoubleClick">
+    <Grid Background="Black">
+        <Viewbox Stretch="Uniform" Name="VBox"
+           SnapsToDevicePixels="True"
+           UseLayoutRounding="True"
+           RenderOptions.EdgeMode="Aliased"
+           RenderOptions.BitmapScalingMode="NearestNeighbor">
+            <Grid Width="640" Height="480">
+                <StackPanel Width="1280" Background="Red">
+                    <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="416" Source="/Resources/Windows-2000-Pro.png" Stretch="UniformToFill" Width="640"/>
+                    <StackPanel MinWidth="1280" Orientation="Horizontal" Name="Slit" HorizontalAlignment="Left">
+                        <Image Name="SlitA" Source="/Resources/slit2k.png" HorizontalAlignment="Stretch" Height="10" Margin="0" />
+                        <Image Name="SlitB" Source="/Resources/slit2k.png" HorizontalAlignment="Stretch" Height="10" Margin="-1,0,0,0" />
+                    </StackPanel>
+                    <Canvas Name="BottomLoader" Height="54" HorizontalAlignment="Left" Width="640">
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="/Resources/Windows-2000-CopyProgress.png" Stretch="UniformToFill"></ImageBrush>
+                        </Canvas.Background>
+                    </Canvas>
+                </StackPanel>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>
