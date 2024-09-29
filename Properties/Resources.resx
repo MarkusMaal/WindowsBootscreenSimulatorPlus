@@ -147,4 +147,11 @@
     <value>..\Resources\slit2kServer.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>Server intermediate bar</comment>
   </data>
+  <data name="xp_blue_throbber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xp_blue_throbber.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Windows-XP-SP2-Boot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows-XP-SP2-Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Generic Windows XP bootscreen (SP2 and later)</comment>
+  </data>
 </root>

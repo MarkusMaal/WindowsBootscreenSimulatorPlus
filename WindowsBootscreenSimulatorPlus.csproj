@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,8 @@
     <None Remove="Resources\Windows-2000-Pro.png" />
     <None Remove="Resources\Windows-2000-Server.png" />
     <None Remove="Resources\Windows-98-4.10.1998-Boot.png" />
+    <None Remove="Resources\Windows-XP-SP2-Boot.png" />
+    <None Remove="Resources\xp_blue_throbber.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +35,8 @@
     <Resource Include="Resources\Windows-2000-Pro.png" />
     <Resource Include="Resources\Windows-2000-Server.png" />
     <Resource Include="Resources\Windows-98-4.10.1998-Boot.png" />
+    <Resource Include="Resources\Windows-XP-SP2-Boot.png" />
+    <Resource Include="Resources\xp_blue_throbber.png" />
   </ItemGroup>
 
   <ItemGroup>

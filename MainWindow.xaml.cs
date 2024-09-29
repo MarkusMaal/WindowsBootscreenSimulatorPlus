@@ -41,6 +41,15 @@ namespace WindowsBootscreenSimulatorPlus
         {
             switch (Mw1.OsList.SelectedItem.ToString())
             {
+                case "Windows XP":
+                    WinXP wxp = new()
+                    {
+                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
+                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
+                    };
+                    wxp.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    wxp.Show();
+                    break;
                 case "Windows 98":
                     Win98 w98 = new()
                     {

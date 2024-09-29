@@ -46,7 +46,7 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            AnimateBar(10);
+            AnimateBar(5);
         }
 
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)

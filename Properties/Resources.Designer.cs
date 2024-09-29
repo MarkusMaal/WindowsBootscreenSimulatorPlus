@@ -149,5 +149,25 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Windows_XP_SP2_Boot {
+            get {
+                object obj = ResourceManager.GetObject("Windows-XP-SP2-Boot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] xp_blue_throbber {
+            get {
+                object obj = ResourceManager.GetObject("xp_blue_throbber", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

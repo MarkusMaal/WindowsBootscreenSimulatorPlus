@@ -11,7 +11,7 @@
         xmlns:uc="clr-namespace:WindowsBootscreenSimulatorPlus"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}" Icon="/Resources/logo.png"
-        Title="Windows Bootscreen Simulator Plus 0.1 pre-alpha" Height="450" Width="800"
+        Title="Windows Bootscreen Simulator Plus 0.11 pre-alpha" Height="450" Width="800"
         Style="{StaticResource MaterialDesignWindow}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
