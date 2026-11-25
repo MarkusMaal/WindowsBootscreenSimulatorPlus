@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus" Icon="/Resources/logo.png" Closed="Window_Closed"
       mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" Background="Black" KeyDown="Window_KeyDown"
-      Title="XP Bootscreen Simulator" Height="480" Width="640" MouseDoubleClick="Window_MouseDoubleClick">
+      Title="XP Bootscreen Simulator" Height="480" Width="640" MouseDoubleClick="Window_MouseDoubleClick"
+        MouseRightButtonUp="Window_MouseRightButtonUp">
 
     <Viewbox Stretch="Uniform" Name="VBox"
      SnapsToDevicePixels="True"

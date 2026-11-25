@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus" Icon="/Resources/logo.png" Closed="Window_Closed"
         mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" Background="Black" KeyDown="Window_KeyDown"
-        Title="9x Bootscreen Simulator" Height="400" Width="640" MouseDoubleClick="Window_MouseDoubleClick">
+        Title="9x Bootscreen Simulator" Height="400" Width="640" MouseDoubleClick="Window_MouseDoubleClick"
+        MouseRightButtonUp="Window_MouseRightButtonUp">
     <Viewbox Stretch="Uniform" Name="VBox"
        SnapsToDevicePixels="True"
        UseLayoutRounding="True"

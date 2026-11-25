@@ -27,8 +27,7 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void AnimateBar(int time)
         {
-            DoubleAnimation da = new DoubleAnimation
-                (0, -640, new Duration(TimeSpan.FromSeconds(time)));
+            DoubleAnimation da = new(0, -640, new Duration(TimeSpan.FromSeconds(time)));
 
             StackPanel[] images = [Slit];
             DoubleAnimation[] animations = [da];
@@ -74,5 +73,7 @@ namespace WindowsBootscreenSimulatorPlus
         {
             
         }
+
+        private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e) => WbssCommon.ResetWindow(this, new Size(640, 429));
     }
 }

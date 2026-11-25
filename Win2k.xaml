@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus" Icon="/Resources/logo.png" Closed="Window_Closed"
         mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" KeyDown="Window_KeyDown"
-        Title="Windows 2000 Bootscreen Simulator" Height="480" Width="640" MouseDoubleClick="Window_MouseDoubleClick">
+        Title="Windows 2000 Bootscreen Simulator" Height="480" Width="640" MouseDoubleClick="Window_MouseDoubleClick"
+        MouseRightButtonUp="Window_MouseRightButtonUp">
     <Grid Background="Black">
         <Viewbox Stretch="Uniform" Name="VBox"
            SnapsToDevicePixels="True"

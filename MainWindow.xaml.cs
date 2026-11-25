@@ -131,15 +131,11 @@ namespace WindowsBootscreenSimulatorPlus
 
         public void OsSwitch()
         {
-            switch (Mw1.OsList.SelectedItem)
+            Mw1.ServerBox.Visibility = Mw1.OsList.SelectedItem switch
             {
-                case "Windows 2000":
-                    Mw1.ServerBox.Visibility = Visibility.Visible;
-                    break;
-                default:
-                    Mw1.ServerBox.Visibility = Visibility.Hidden;
-                    break;
-            }
+                "Windows 2000" => Visibility.Visible,
+                _ => Visibility.Hidden,
+            };
         }
     }
 }

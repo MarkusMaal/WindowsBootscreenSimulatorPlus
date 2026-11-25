@@ -28,9 +28,9 @@ namespace WindowsBootscreenSimulatorPlus
             InitializeComponent();
         }
         int pos = 1;
-        private Image throbberA;
-        private Image throbberB;
-        private Image throbberC;
+        private Image? throbberA;
+        private Image? throbberB;
+        private Image? throbberC;
 
         private void AnimateBar()
         {
@@ -38,7 +38,7 @@ namespace WindowsBootscreenSimulatorPlus
             {
                 Interval = new TimeSpan(0, 0, 0, 0, 50)
             };
-            dispatcherTimer.Tick += (object? sender, EventArgs e) =>
+            dispatcherTimer.Tick += (sender, e) =>
             {
                 if ((pos - 4 > 0) && (pos - 4 < 16))
                 {
@@ -46,15 +46,15 @@ namespace WindowsBootscreenSimulatorPlus
                 }
                 if ((pos - 3 > 0) && (pos - 3 < 16))
                 {
-                    ((Image)this.FindName("Throbber" + (pos - 3).ToString())).Source = throbberA.Source;
+                    ((Image)this.FindName("Throbber" + (pos - 3).ToString())).Source = throbberA?.Source;
                 }
                 if ((pos - 2 > 0) && (pos - 2 < 16))
                 {
-                    ((Image)this.FindName("Throbber" + (pos - 2).ToString())).Source = throbberB.Source;
+                    ((Image)this.FindName("Throbber" + (pos - 2).ToString())).Source = throbberB?.Source;
                 }
                 if ((pos - 1 > 0) && (pos - 1 < 16))
                 {
-                    ((Image)this.FindName("Throbber" + (pos - 1).ToString())).Source = throbberC.Source;
+                    ((Image)this.FindName("Throbber" + (pos - 1).ToString())).Source = throbberC?.Source;
                 }
                 if ((pos > 0) && (pos < 16))
                 {
@@ -123,9 +123,12 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            if (throbberA == null || throbberB == null || throbberC == null) return;
             throbberA.Source = null;
             throbberB.Source = null;
             throbberC.Source = null;
         }
+
+        private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e) => WbssCommon.ResetWindow(this, new Size(640, 480));
     }
 }

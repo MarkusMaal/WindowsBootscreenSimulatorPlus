@@ -123,5 +123,7 @@ namespace WindowsBootscreenSimulatorPlus
         {
 
         }
+
+        private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e) => WbssCommon.ResetWindow(this, new Size(640, 480));
     }
 }
