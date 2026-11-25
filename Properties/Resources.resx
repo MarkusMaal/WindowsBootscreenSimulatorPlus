@@ -154,4 +154,8 @@
     <value>..\Resources\Windows-XP-SP2-Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>Generic Windows XP bootscreen (SP2 and later)</comment>
   </data>
+  <data name="NtChars" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NtChars.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <comment>Windows NT bootscreen character set</comment>
+  </data>
 </root>

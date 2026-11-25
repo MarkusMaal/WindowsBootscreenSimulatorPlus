@@ -1,14 +1,8 @@
 ﻿using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WindowsBootscreenSimulatorPlus
 {
@@ -34,7 +28,7 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Simulators = ["Windows 98", "Windows ME", "Windows 2000", "Windows XP"];
+            Simulators = ["Windows NT 4", "Windows 98", "Windows ME", "Windows 2000", "Windows XP"];
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
@@ -89,6 +83,15 @@ namespace WindowsBootscreenSimulatorPlus
                         w2k.increments[i] = r.Next(0, 5000);
                     }
                     w2k.Show();
+                    break;
+                case "Windows NT 4":
+                    WinNT wNt = new()
+                    {
+                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
+                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
+                    };
+                    wNt.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    wNt.Show();
                     break;
                 default:
                     MessageBox.Show("Not implemented!", "Simulate function", MessageBoxButton.OK, MessageBoxImage.Hand);

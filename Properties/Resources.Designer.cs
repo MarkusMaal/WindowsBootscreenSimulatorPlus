@@ -19,10 +19,10 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsBootscreenSimulatorPlus.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] logo {
+        public static byte[] logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
                 return ((byte[])(obj));
@@ -71,9 +71,41 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ..##....
+        ///.####...
+        ///##..##..
+        ///##..##..
+        ///######..
+        ///##..##..
+        ///##..##..
+        ///........
+        ///######..
+        ///.##..##.
+        ///.##..##.
+        ///.#####..
+        ///.##..##.
+        ///.##..##.
+        ///######..
+        ///........
+        ///..####..
+        ///.##..##.
+        ///##......
+        ///##......
+        ///##......
+        ///.##..##.
+        ///..####..
+        ///.........
+        /// </summary>
+        public static string NtChars {
+            get {
+                return ResourceManager.GetString("NtChars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] slit {
+        public static byte[] slit {
             get {
                 object obj = ResourceManager.GetObject("slit", resourceCulture);
                 return ((byte[])(obj));
@@ -83,7 +115,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] slit2k {
+        public static byte[] slit2k {
             get {
                 object obj = ResourceManager.GetObject("slit2k", resourceCulture);
                 return ((byte[])(obj));
@@ -93,7 +125,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] slit2kserver {
+        public static byte[] slit2kserver {
             get {
                 object obj = ResourceManager.GetObject("slit2kserver", resourceCulture);
                 return ((byte[])(obj));
@@ -103,7 +135,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Windows_2000_CopyProgress {
+        public static byte[] Windows_2000_CopyProgress {
             get {
                 object obj = ResourceManager.GetObject("Windows-2000-CopyProgress", resourceCulture);
                 return ((byte[])(obj));
@@ -113,7 +145,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Windows_2000_Pro {
+        public static byte[] Windows_2000_Pro {
             get {
                 object obj = ResourceManager.GetObject("Windows-2000-Pro", resourceCulture);
                 return ((byte[])(obj));
@@ -123,7 +155,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Windows_2000_Server {
+        public static byte[] Windows_2000_Server {
             get {
                 object obj = ResourceManager.GetObject("Windows-2000-Server", resourceCulture);
                 return ((byte[])(obj));
@@ -133,7 +165,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Windows_98_4_10_1998_Boot {
+        public static byte[] Windows_98_4_10_1998_Boot {
             get {
                 object obj = ResourceManager.GetObject("Windows-98-4.10.1998-Boot", resourceCulture);
                 return ((byte[])(obj));
@@ -143,7 +175,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Windows_ME_4_90_3000_Boot {
+        public static byte[] Windows_ME_4_90_3000_Boot {
             get {
                 object obj = ResourceManager.GetObject("Windows_ME_4_90_3000_Boot", resourceCulture);
                 return ((byte[])(obj));
@@ -153,7 +185,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Windows_XP_SP2_Boot {
+        public static byte[] Windows_XP_SP2_Boot {
             get {
                 object obj = ResourceManager.GetObject("Windows-XP-SP2-Boot", resourceCulture);
                 return ((byte[])(obj));
@@ -163,7 +195,7 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] xp_blue_throbber {
+        public static byte[] xp_blue_throbber {
             get {
                 object obj = ResourceManager.GetObject("xp_blue_throbber", resourceCulture);
                 return ((byte[])(obj));
