@@ -7,10 +7,29 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseWPF>true</UseWPF>
+	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	<PublishSingleFile>true</PublishSingleFile>
+	<DebugSymbols>false</DebugSymbols>
+	<DebugType>None</DebugType>
+	<ApplicationIcon>logo.ico</ApplicationIcon>
+	<AssemblyVersion>0.13.0.0</AssemblyVersion>
+	<FileVersion>0.13.0.0</FileVersion>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageIcon>logo.png</PackageIcon>
+	<PackageProjectUrl>https://github.com/MarkusMaal/WindowsBootScreenSimulatorPlus</PackageProjectUrl>
+	<Copyright>(c) 2024 - 2026  Markus Maal</Copyright>
+	<Description>A tool that lets the user simulate various bootscreens from the Microsoft Windows operating system.</Description>
+	<Title>Windows Bootscreen Simulator Plus</Title>
+	<RepositoryType>git</RepositoryType>
+	<RepositoryUrl>https://github.com/MarkusMaal/WindowsBootScreenSimulatorPlus</RepositoryUrl>
+	<AssemblyTitle>Windows Bootscreen Simulator Plus</AssemblyTitle>
+	<Company>Markuse tarkvara</Company>
+
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\logo.png" />
     <None Remove="Resources\NtChars.txt" />
     <None Remove="Resources\slit.png" />
     <None Remove="Resources\slit2k.png" />
@@ -21,6 +40,10 @@
     <None Remove="Resources\Windows-98-4.10.1998-Boot.png" />
     <None Remove="Resources\Windows-XP-SP2-Boot.png" />
     <None Remove="Resources\xp_blue_throbber.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +77,21 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Resources\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
