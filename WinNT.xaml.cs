@@ -29,7 +29,7 @@ namespace WindowsBootscreenSimulatorPlus
             {
                 var pixels = new List<byte>();
                 string[] bootscreenText = [
-                    "Microsoft (R) Windows NT (TM) Version 4.0 (Build 1381: Service Pack 4). õõ",
+                    "Microsoft (R) Windows NT (TM) Version 4.0 (Build 1381: Service Pack 4).",
                     "1 System Processor [64 MB Memory]"
                 ];
                 for (int i = 0; i < 640 * 480 * 3; i += 3)
