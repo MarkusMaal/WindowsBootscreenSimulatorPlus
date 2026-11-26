@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -18,14 +19,21 @@ namespace WindowsBootscreenSimulatorPlus
             new Thread(() =>
             {
                 Thread.Sleep(4900); // show dots after one animation cycle
-                Dispatcher.Invoke(() =>
+                try
                 {
-                    Dot1.Visibility = Visibility.Visible;
-                    Dot2.Visibility = Visibility.Visible;
-                    Dot3.Visibility = Visibility.Visible;
-                    Dot4.Visibility = Visibility.Visible;
-                    Dot5.Visibility = Visibility.Visible;
-                });
+                    Dispatcher.Invoke(() =>
+                    {
+                        Dot1.Visibility = Visibility.Visible;
+                        Dot2.Visibility = Visibility.Visible;
+                        Dot3.Visibility = Visibility.Visible;
+                        Dot4.Visibility = Visibility.Visible;
+                        Dot5.Visibility = Visibility.Visible;
+                    });
+                } catch (TaskCanceledException)
+                {
+                    Debug.WriteLine("[DEBUG] Cancelled metro bootscreen");
+                    return;
+                }
             }).Start();
         }
 

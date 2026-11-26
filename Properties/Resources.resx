@@ -162,4 +162,11 @@
     <value>..\Resources\activity.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>Windows 7 boot animation</comment>
   </data>
+  <data name="vista_golden_throbber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vista_golden_throbber.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WindowsVista-RTM-Boot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WindowsVista-RTM-Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Windows Vista bootscreen</comment>
+  </data>
 </root>

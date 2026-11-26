@@ -1,7 +1,9 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
@@ -14,6 +16,9 @@ namespace WindowsBootscreenSimulatorPlus
     {
 
         internal bool FadeIn { get; init; } = false;
+        public required byte[] Throbber { get; init; }
+        public required byte[] Graphic { get; init; }
+
         public WinXP()
         {
             InitializeComponent();
@@ -63,27 +68,40 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var ms = new MemoryStream(Graphic);
+            var bmp = new BitmapImage();
+            bmp.BeginInit();
+            bmp.StreamSource = ms;
+            bmp.EndInit();
+            BottomLoader.Background = new ImageBrush(bmp);
             new Thread(() =>
             {
-                if (FadeIn)
+                try
                 {
-                    Thread.Sleep(500);
-                    var levels = 16.0;
-                    for (int i = 0; i < (int)levels; i++)
+                    if (FadeIn)
                     {
-                        Dispatcher.Invoke(() => RootGrid.Opacity += 1.0 / levels);
+                        Thread.Sleep(500);
+                        var levels = 16.0;
+                        for (int i = 0; i < (int)levels; i++)
+                        {
+                            Dispatcher.Invoke(() => RootGrid.Opacity += 1.0 / levels);
+                            Thread.Sleep(100);
+                        }
                         Thread.Sleep(100);
                     }
-                    Thread.Sleep(100);
-                }
-                Dispatcher.Invoke(() =>
+                    Dispatcher.Invoke(() =>
+                    {
+                        RootGrid.Opacity = 1.0;
+                        throbberA = GetCroppedImageResource(Throbber, new Int32Rect(0, 0, 6, 9));
+                        throbberB = GetCroppedImageResource(Throbber, new Int32Rect(8, 0, 6, 9));
+                        throbberC = GetCroppedImageResource(Throbber, new Int32Rect(16, 0, 6, 9));
+                        AnimateBar();
+                    });
+                } catch (TaskCanceledException)
                 {
-                    RootGrid.Opacity = 1.0;
-                    throbberA = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(0, 0, 6, 9));
-                    throbberB = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(8, 0, 6, 9));
-                    throbberC = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(16, 0, 6, 9));
-                    AnimateBar();
-                });
+                    Debug.WriteLine("[DEBUG] Cancelled fade-in for Windows XP/Vista bootscreen");
+                    return;
+                }
             }).Start();
         }
 

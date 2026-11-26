@@ -36,23 +36,30 @@ namespace WindowsBootscreenSimulatorPlus
             var delay = 80;
             var ms = new MemoryStream(Properties.Resources.activity);
             var animationBitmap = new BitmapImage();
-            animationBitmap.BeginInit();
-            animationBitmap.CacheOption = BitmapCacheOption.OnLoad;
-            animationBitmap.StreamSource = ms;
-            animationBitmap.EndInit();
             CroppedBitmap?[] frames = new CroppedBitmap?[105];
-            for (int i = 0; i < 105; i++)
-            {
-                frames[i] = new(animationBitmap, new Int32Rect(0, 200 * i, 200, 200));
-            }
             new Thread(() =>
             {
                 Thread.Sleep(5000);
+                if (!terminate)
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        animationBitmap.BeginInit();
+                        animationBitmap.CacheOption = BitmapCacheOption.OnLoad;
+                        animationBitmap.StreamSource = ms;
+                        animationBitmap.EndInit();
+                        for (int i = 0; i < 105; i++)
+                        {
+                            frames[i] = new(animationBitmap, new Int32Rect(0, 200 * i, 200, 200));
+                        }
+                    });
+                }
                 int i;
 
                 // beginning
                 for (i = 0; i < loopPoint; i++)
                 {
+                    if (terminate) break;
                     Thread.Sleep(delay);
                     Dispatcher.Invoke(() =>
                     {
@@ -71,14 +78,17 @@ namespace WindowsBootscreenSimulatorPlus
                     if (i > 104) i = loopPoint;
                 }
 
-                Dispatcher.Invoke(() =>
+                if (!terminate)
                 {
-                    animationBitmap = null;
-                    for (int i = 0; i < 104; i++)
+                    Dispatcher.Invoke(() =>
                     {
-                        frames[i] = null;
-                    }
-                });
+                        animationBitmap = null;
+                        for (int i = 0; i < 104; i++)
+                        {
+                            frames[i] = null;
+                        }
+                    });
+                }
                 ms.Close();
                 GC.Collect();
             }).Start();

@@ -132,6 +132,16 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] vista_golden_throbber {
+            get {
+                object obj = ResourceManager.GetObject("vista_golden_throbber", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] Windows_2000_CopyProgress {
             get {
                 object obj = ResourceManager.GetObject("Windows-2000-CopyProgress", resourceCulture);
@@ -185,6 +195,16 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         public static byte[] Windows_XP_SP2_Boot {
             get {
                 object obj = ResourceManager.GetObject("Windows-XP-SP2-Boot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] WindowsVista_RTM_Boot {
+            get {
+                object obj = ResourceManager.GetObject("WindowsVista-RTM-Boot", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -13,6 +13,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}" Icon="/Resources/logo.png"
         Title="Windows Bootscreen Simulator Plus" Height="450" Width="800"
         Style="{StaticResource MaterialDesignWindow}"
+        Closing="Window_Closing"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Grid>

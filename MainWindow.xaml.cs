@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -28,11 +29,12 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Simulators = ["Windows NT 4", "Windows 98", "Windows ME", "Windows 2000", "Windows XP", "Windows 7", "Windows 8.x/10"];
+            Simulators = ["Windows NT 4", "Windows 98", "Windows ME", "Windows 2000", "Windows XP", "Windows Vista (logoless)", "Windows 7", "Windows 8.x/10"];
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
+            var formCursor = (Mw1.CursorBox.IsChecked ?? false) ? Cursors.Arrow : Cursors.None;
             switch (Mw1.OsList.SelectedItem.ToString())
             {
                 case "Windows 8.x/10":
@@ -42,16 +44,22 @@ namespace WindowsBootscreenSimulatorPlus
                         WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
                     };
                     wx.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    wx.Cursor = formCursor;
                     wx.Show();
                     break;
                 case "Windows XP":
+                case "Windows Vista (logoless)":
+                    var isVista = Mw1.OsList.SelectedItem.ToString()?.StartsWith("Windows Vista") ?? false;
                     WinXP wxp = new()
                     {
                         WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
                         WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal,
-                        FadeIn = Mw1.FadeBox.IsChecked ?? false
+                        FadeIn = Mw1.FadeBox.IsChecked ?? false,
+                        Throbber = isVista ? Properties.Resources.vista_golden_throbber : Properties.Resources.xp_blue_throbber,
+                        Graphic = isVista ? Properties.Resources.WindowsVista_RTM_Boot : Properties.Resources.Windows_XP_SP2_Boot
                     };
                     wxp.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    wxp.Cursor = formCursor;
                     wxp.Show();
                     break;
                 case "Windows 98":
@@ -61,6 +69,7 @@ namespace WindowsBootscreenSimulatorPlus
                         WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
                     };
                     w98.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    w98.Cursor = formCursor;
                     w98.Show();
                     break;
                 case "Windows ME":
@@ -71,6 +80,7 @@ namespace WindowsBootscreenSimulatorPlus
                     };
                     w98.LogoImage.Source = GetImageResource(Properties.Resources.Windows_ME_4_90_3000_Boot);
                     w98.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    w98.Cursor = formCursor;
                     w98.Show();
                     break;
                 case "Windows 2000":
@@ -92,6 +102,7 @@ namespace WindowsBootscreenSimulatorPlus
                     {
                         w2k.increments[i] = r.Next(0, 5000);
                     }
+                    w2k.Cursor = formCursor;
                     w2k.Show();
                     break;
                 case "Windows NT 4":
@@ -101,6 +112,7 @@ namespace WindowsBootscreenSimulatorPlus
                         WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
                     };
                     wNt.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    wNt.Cursor = (Mw1.CursorBox.IsChecked ?? false) ? Cursors.Wait : Cursors.None;
                     wNt.Show();
                     break;
                 case "Windows 7":
@@ -110,6 +122,7 @@ namespace WindowsBootscreenSimulatorPlus
                         WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
                     };
                     w7.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    w7.Cursor = formCursor;
                     w7.Show();
                     break;
                 default:
@@ -153,12 +166,21 @@ namespace WindowsBootscreenSimulatorPlus
 
         public void OsSwitch()
         {
-            Mw1.FadeBox.Visibility = Mw1.OsList.SelectedItem.ToString() == "Windows XP" ? Visibility.Visible : Visibility.Collapsed;
+            Mw1.FadeBox.Visibility = Mw1.OsList.SelectedItem switch
+            {
+                "Windows XP" => Visibility.Visible,
+                "Windows Vista (logoless)" => Visibility.Visible,
+                _ => Visibility.Collapsed
+            };
             Mw1.ServerBox.Visibility = Mw1.OsList.SelectedItem switch
             {
                 "Windows 2000" => Visibility.Visible,
                 _ => Visibility.Collapsed,
             };
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
         }
     }
 }

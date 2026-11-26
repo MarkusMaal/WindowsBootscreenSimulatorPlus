@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -12,6 +14,11 @@ namespace WindowsBootscreenSimulatorPlus
     {
         public readonly Color background = Color.FromArgb(255, 0, 0, 160);
         public readonly Color foreground = Color.FromArgb(255, 170, 170, 170);
+
+        [DllImport("kernel32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool GetPhysicallyInstalledSystemMemory(out long TotalMemoryInKilobytes);
+
         public WinNT()
         {
             InitializeComponent();
@@ -28,9 +35,10 @@ namespace WindowsBootscreenSimulatorPlus
             new Thread(() =>
             {
                 var pixels = new List<byte>();
+                GetPhysicallyInstalledSystemMemory(out long memKb);
                 string[] bootscreenText = [
                     "Microsoft (R) Windows NT (TM) Version 4.0 (Build 1381: Service Pack 4).",
-                    "1 System Processor [64 MB Memory]"
+                    $"1 System Processor [{memKb / 1024} MB Memory]"
                 ];
                 for (int i = 0; i < 640 * 480 * 3; i += 3)
                 {
@@ -53,19 +61,35 @@ namespace WindowsBootscreenSimulatorPlus
                     }
                     if (i % 60 == 0)
                     {
-                        Dispatcher.Invoke(() =>
+                        try
                         {
-                            GenerateCenterBar.Value = (int)Math.Round(i / (double)(640 * 480 * 3) * 100.0);
-                        });
+                            Dispatcher.Invoke(() =>
+                            {
+                                GenerateCenterBar.Value = (int)Math.Round(i / (double)(640 * 480 * 3) * 100.0);
+                            });
+                        } catch (TaskCanceledException)
+                        {
+                            Debug.WriteLine("[DEBUG] NT pixel generator cancelled");
+                            return;
+                        }
                     }
                 }
-                Dispatcher.Invoke(() =>
+                try
+                { 
+                    Dispatcher.Invoke(() =>
+                    {
+                        GenerateCenter.Visibility = Visibility.Collapsed;
+                        var bmp = BitmapSource.Create(640, 480, 1.0, 1.0, PixelFormats.Rgb24, null, pixels.ToArray(), 640 * 3);
+                        RasterImage.Source = bmp;
+                        if (Cursor != Cursors.None)
+                            Cursor = Cursors.Arrow;
+                    });
+                }
+                catch (TaskCanceledException)
                 {
-                    GenerateCenter.Visibility = Visibility.Collapsed;
-                    var bmp = BitmapSource.Create(640, 480, 1.0, 1.0, PixelFormats.Rgb24, null, pixels.ToArray(), 640 * 3);
-                    RasterImage.Source = bmp;
-                    Cursor = Cursors.Arrow;
-                });
+                    Debug.WriteLine("[DEBUG] Cannot draw image - main thread has exited!");
+                    return;
+                }
             }).Start();
         }
 

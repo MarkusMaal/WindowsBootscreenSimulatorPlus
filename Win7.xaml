@@ -15,7 +15,10 @@
            RenderOptions.EdgeMode="Unspecified"
            RenderOptions.BitmapScalingMode="HighQuality">
             <Grid Width="1024" Height="760">
-                <Image CacheMode="BitmapCache" Width="200" Height="200" Name="GlowFunAnimation" Margin="0,0,0,100" />
+                <Grid d:Background="Magenta" Width="200" Height="200" Margin="0,0,0,100">
+                    <Image CacheMode="BitmapCache" Name="GlowFunAnimation" />
+                    <TextBlock Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="36" Visibility="Collapsed" d:Visibility="Visible" Text="Animated logo"></TextBlock>
+                </Grid>
                 <TextBlock Foreground="White" FontSize="26" Margin="0,235,0,0" VerticalAlignment="Center" TextAlignment="Center">Starting Windows</TextBlock>
                 <TextBlock Foreground="DimGray" FontSize="15" Margin="0,0,0,51" VerticalAlignment="Bottom" TextAlignment="Center">© Microsoft Corporation</TextBlock>
             </Grid>

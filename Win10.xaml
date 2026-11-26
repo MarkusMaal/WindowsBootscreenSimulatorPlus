@@ -50,7 +50,7 @@
             </Rectangle>
             <Viewbox VerticalAlignment="Bottom" HorizontalAlignment="Center"  Margin="25, 0, 0, 140" Width="15" Height="15">
                 <Grid>
-                    <Grid Width="10" Height="10" Name="Dot1" Visibility="Hidden">
+                    <Grid Width="10" Height="10" Name="Dot1" Visibility="Hidden" d:Visibility="Visible">
                         <Ellipse Margin="0,0,0,-5" Width="2" Height="2" Fill="White" />
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="Grid.Loaded">
@@ -83,10 +83,10 @@
                             </EventTrigger>
                         </Grid.Triggers>
                         <Grid.RenderTransform>
-                            <RotateTransform x:Name="Dot1RotateTransform" Angle="0"></RotateTransform>
+                            <RotateTransform x:Name="Dot1RotateTransform" Angle="0" d:Angle="130"></RotateTransform>
                         </Grid.RenderTransform>
                     </Grid>
-                    <Grid Width="10" Height="10" Name="Dot2" Visibility="Hidden">
+                    <Grid Width="10" Height="10" Name="Dot2" Visibility="Hidden" d:Visibility="Visible">
                         <Ellipse Margin="0,0,0,-5" Width="2" Height="2" Fill="White" />
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="Grid.Loaded">
@@ -121,10 +121,10 @@
                             </EventTrigger>
                         </Grid.Triggers>
                         <Grid.RenderTransform>
-                            <RotateTransform x:Name="Dot2RotateTransform" Angle="0"></RotateTransform>
+                            <RotateTransform x:Name="Dot2RotateTransform" Angle="0" d:Angle="100"></RotateTransform>
                         </Grid.RenderTransform>
                     </Grid>
-                    <Grid Width="10" Height="10" Name="Dot3" Visibility="Hidden">
+                    <Grid Width="10" Height="10" Name="Dot3" Visibility="Hidden" d:Visibility="Visible">
                         <Ellipse Margin="0,0,0,-5" Width="2" Height="2" Fill="White" />
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="Grid.Loaded">
@@ -159,10 +159,10 @@
                             </EventTrigger>
                         </Grid.Triggers>
                         <Grid.RenderTransform>
-                            <RotateTransform x:Name="Dot3RotateTransform" Angle="0"></RotateTransform>
+                            <RotateTransform x:Name="Dot3RotateTransform" Angle="0" d:Angle="70"></RotateTransform>
                         </Grid.RenderTransform>
                     </Grid>
-                    <Grid Width="10" Height="10" Name="Dot4" Visibility="Hidden">
+                    <Grid Width="10" Height="10" Name="Dot4" Visibility="Hidden" d:Visibility="Visible">
                         <Ellipse Margin="0,0,0,-5" Width="2" Height="2" Fill="White" />
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="Grid.Loaded">
@@ -197,10 +197,10 @@
                             </EventTrigger>
                         </Grid.Triggers>
                         <Grid.RenderTransform>
-                            <RotateTransform x:Name="Dot4RotateTransform" Angle="0"></RotateTransform>
+                            <RotateTransform x:Name="Dot4RotateTransform" Angle="0" d:Angle="40"></RotateTransform>
                         </Grid.RenderTransform>
                     </Grid>
-                    <Grid Width="10" Height="10" Name="Dot5" Visibility="Hidden">
+                    <Grid Width="10" Height="10" Name="Dot5" Visibility="Hidden" d:Visibility="Visible">
                         <Ellipse Margin="0,0,0,-5" Width="2" Height="2" Fill="White" />
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="Grid.Loaded">
@@ -235,7 +235,7 @@
                             </EventTrigger>
                         </Grid.Triggers>
                         <Grid.RenderTransform>
-                            <RotateTransform x:Name="Dot5RotateTransform" Angle="0"></RotateTransform>
+                            <RotateTransform x:Name="Dot5RotateTransform" Angle="0" d:Angle="10"></RotateTransform>
                         </Grid.RenderTransform>
                     </Grid>
                 </Grid>
