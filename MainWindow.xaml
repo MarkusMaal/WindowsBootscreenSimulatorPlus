@@ -16,8 +16,8 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Grid>
-        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
-            <materialDesign:DrawerHost.LeftDrawerContent>
+        <materialDesign:DrawerHost IsLeftDrawerOpen="False">
+            <!--<materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel MinWidth="212">
                     <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
                             DockPanel.Dock="Top" Name="ToggleArrow"
@@ -39,7 +39,7 @@
                         </MenuItem>
                     </Menu>
                 </DockPanel>
-            </materialDesign:DrawerHost.LeftDrawerContent>
+            </materialDesign:DrawerHost.LeftDrawerContent>-->
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -54,22 +54,24 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
-                                Name="MenuToggleButton" Grid.Column="0"/>
+                        <!--<ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                Name="MenuToggleButton" Grid.Column="0"/>-->
+                        <Grid Grid.Column="1">
+                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="Segoe UI Semilight">Windows Bootscreen Simulator Plus</Label>
+                        </Grid>
                     </Grid>
                 </materialDesign:ColorZone>
-                <Grid Grid.Row="0">
-                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontFamily="Segoe UI Semilight">Windows Bootscreen Simulator Plus</Label>
-                </Grid>
-                <Grid Grid.Row="1" Name="UIMain">
-                    <uc:MainView x:Name="Mw1" Simulators="{Binding Simulators}" />
-                </Grid>
-                <Grid Grid.Row="1" Visibility="Hidden" Name="Settings">
-                    <uc:Test Text="Settings"></uc:Test>
-                </Grid>
-                <Grid Grid.Row="1" Visibility="Hidden" Name="About">
-                    <uc:Test Text="About"></uc:Test>
-                </Grid>
+                <TabControl Grid.Row="1"  TabStripPlacement="Left">
+                    <TabItem Grid.Row="1" Name="UIMain" Header="Simulator">
+                        <uc:MainView x:Name="Mw1" Simulators="{Binding Simulators}"/>
+                    </TabItem>
+                    <TabItem Grid.Row="1" Header="Settings" Name="Settings">
+                        <uc:Test Text="Settings"></uc:Test>
+                    </TabItem>
+                    <TabItem Grid.Row="1" Header="About" Name="About">
+                        <uc:About></uc:About>
+                    </TabItem>
+                </TabControl>
             </Grid>
         </materialDesign:DrawerHost>
     </Grid>
