@@ -12,6 +12,8 @@ namespace WindowsBootscreenSimulatorPlus
     /// </summary>
     public partial class WinXP : Window
     {
+
+        internal bool FadeIn { get; init; } = false;
         public WinXP()
         {
             InitializeComponent();
@@ -61,10 +63,28 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            throbberA = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(0, 0, 6, 9));
-            throbberB = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(8, 0, 6, 9));
-            throbberC = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(16, 0, 6, 9));
-            AnimateBar();
+            new Thread(() =>
+            {
+                if (FadeIn)
+                {
+                    Thread.Sleep(500);
+                    var levels = 16.0;
+                    for (int i = 0; i < (int)levels; i++)
+                    {
+                        Dispatcher.Invoke(() => RootGrid.Opacity += 1.0 / levels);
+                        Thread.Sleep(100);
+                    }
+                    Thread.Sleep(100);
+                }
+                Dispatcher.Invoke(() =>
+                {
+                    RootGrid.Opacity = 1.0;
+                    throbberA = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(0, 0, 6, 9));
+                    throbberB = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(8, 0, 6, 9));
+                    throbberC = GetCroppedImageResource(Properties.Resources.xp_blue_throbber, new Int32Rect(16, 0, 6, 9));
+                    AnimateBar();
+                });
+            }).Start();
         }
 
         private static Image GetCroppedImageResource(byte[] data, Int32Rect crop)

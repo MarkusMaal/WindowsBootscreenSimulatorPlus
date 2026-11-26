@@ -48,7 +48,8 @@ namespace WindowsBootscreenSimulatorPlus
                     WinXP wxp = new()
                     {
                         WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
+                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal,
+                        FadeIn = Mw1.FadeBox.IsChecked ?? false
                     };
                     wxp.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
                     wxp.Show();
@@ -143,10 +144,11 @@ namespace WindowsBootscreenSimulatorPlus
 
         public void OsSwitch()
         {
+            Mw1.FadeBox.Visibility = Mw1.OsList.SelectedItem.ToString() == "Windows XP" ? Visibility.Visible : Visibility.Collapsed;
             Mw1.ServerBox.Visibility = Mw1.OsList.SelectedItem switch
             {
                 "Windows 2000" => Visibility.Visible,
-                _ => Visibility.Hidden,
+                _ => Visibility.Collapsed,
             };
         }
     }

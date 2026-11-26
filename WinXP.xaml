@@ -13,7 +13,7 @@
      UseLayoutRounding="True"
      RenderOptions.EdgeMode="Aliased"
      RenderOptions.BitmapScalingMode="NearestNeighbor">
-        <Grid Width="640" Height="480">
+        <Grid Name="RootGrid" Width="640" Height="480" Opacity="0">
             <StackPanel Width="640">
 
                 <Grid Name="BottomLoader" Height="480" HorizontalAlignment="Left" Width="640">
