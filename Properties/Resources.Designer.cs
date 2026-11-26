@@ -63,6 +63,16 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] activity {
+            get {
+                object obj = ResourceManager.GetObject("activity", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
@@ -71,30 +81,17 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ..##....
-        ///.####...
-        ///##..##..
-        ///##..##..
-        ///######..
-        ///##..##..
-        ///##..##..
-        ///........
-        ///######..
-        ///.##..##.
-        ///.##..##.
-        ///.#####..
-        ///.##..##.
-        ///.##..##.
-        ///######..
-        ///........
-        ///..####..
-        ///.##..##.
-        ///##......
-        ///##......
-        ///##......
-        ///.##..##.
-        ///..####..
-        ///.........
+        ///   Looks up a localized string similar to ................ Raster font for the text on the Windows NT boot screen (converted to pixels at runtime)
+        ///.........######. Any character past the . symbols is treated as a comment
+        ///.........#....#. 
+        ///.........#....#. L: Space character
+        ///.........#....#. R: Unknown character placeholder symbol (when you try to use a symbol that is not in the set)
+        ///.........#....#. 
+        ///.........######. # = Use foreground color
+        ///................
+        ///..##............ L: Uppercase letters
+        ///.####........... R: Lowercase letters
+        ///##..# [rest of string was truncated]&quot;;.
         /// </summary>
         public static string NtChars {
             get {

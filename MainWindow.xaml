@@ -65,7 +65,7 @@
                     <TabItem Grid.Row="1" Name="UIMain" Header="Simulator">
                         <uc:MainView x:Name="Mw1" Simulators="{Binding Simulators}"/>
                     </TabItem>
-                    <TabItem Grid.Row="1" Header="Settings" Name="Settings">
+                    <TabItem Grid.Row="1" Header="Settings" Name="Settings" Visibility="Collapsed">
                         <uc:Test Text="Settings"></uc:Test>
                     </TabItem>
                     <TabItem Grid.Row="1" Header="About" Name="About">

@@ -28,7 +28,7 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Simulators = ["Windows NT 4", "Windows 98", "Windows ME", "Windows 2000", "Windows XP", "Windows 8.x/10"];
+            Simulators = ["Windows NT 4", "Windows 98", "Windows ME", "Windows 2000", "Windows XP", "Windows 7", "Windows 8.x/10"];
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
@@ -102,6 +102,15 @@ namespace WindowsBootscreenSimulatorPlus
                     };
                     wNt.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
                     wNt.Show();
+                    break;
+                case "Windows 7":
+                    Win7 w7 = new()
+                    {
+                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
+                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
+                    };
+                    w7.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
+                    w7.Show();
                     break;
                 default:
                     MessageBox.Show("Not implemented!", "Simulate function", MessageBoxButton.OK, MessageBoxImage.Hand);

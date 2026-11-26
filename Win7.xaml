@@ -1,0 +1,24 @@
+﻿<Window x:Class="WindowsBootscreenSimulatorPlus.Win7"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus"
+        mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" KeyDown="Window_KeyDown"
+        Title="Windows 7 Bootscreen Simulator" Width="1024" Height="768" MouseDoubleClick="Window_MouseDoubleClick"
+        Closing="Window_Closing"
+        MouseRightButtonUp="Window_MouseRightButtonUp">
+    <Grid Background="Black">
+        <Viewbox Stretch="Uniform" Name="VBox"
+           SnapsToDevicePixels="True"
+           UseLayoutRounding="True"
+           RenderOptions.EdgeMode="Unspecified"
+           RenderOptions.BitmapScalingMode="HighQuality">
+            <Grid Width="1024" Height="760">
+                <Image CacheMode="BitmapCache" Width="200" Height="200" Name="GlowFunAnimation" Margin="0,0,0,100" />
+                <TextBlock Foreground="White" FontSize="26" Margin="0,235,0,0" VerticalAlignment="Center" TextAlignment="Center">Starting Windows</TextBlock>
+                <TextBlock Foreground="DimGray" FontSize="15" Margin="0,0,0,51" VerticalAlignment="Bottom" TextAlignment="Center">© Microsoft Corporation</TextBlock>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>

@@ -26,10 +26,11 @@
                 <TextBlock Grid.Column="0">Version:</TextBlock>
                 <TextBlock Grid.Column="1"  Margin="5,0" Text="{Binding AssemblyVersion}" d:Text="0.0"></TextBlock>
             </Grid>
-            <TextBlock Margin="0,0,0,20" TextWrapping="Wrap" Text="{Binding AssemblyDescription}" d:Text="The quick brown fox jumps over the lazy dog. 0123456789 [THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG]"></TextBlock>
+            <TextBlock Margin="0,0,0,10" TextWrapping="Wrap" Text="{Binding AssemblyDescription}" d:Text="The quick brown fox jumps over the lazy dog. 0123456789 [THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG]"></TextBlock>
             <TextBlock Grid.Column="1"  Text="{Binding AssemblyCopyright}" d:Text="N/A"></TextBlock>
             <TextBlock Grid.Column="1"  Text="{Binding AssemblyCompany}" d:Text="N/A"></TextBlock>
-            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+            <TextBlock TextWrapping="Wrap" Margin="0,10,0,0">Special thanks to Jeffrey Bush (coderforlife) for providing the Windows 7 boot animation sequence as BMPs!</TextBlock>
+            <TextBlock TextWrapping="Wrap" Margin="0,10,0,0">
                 Trademark rights and the copyright of the various graphics and logos belong to their respective owners. This program comes with ABSOLUTELY NO WARRANTY and is provided AS IS.
             </TextBlock>
         </StackPanel>
