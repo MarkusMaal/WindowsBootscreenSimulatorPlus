@@ -1,0 +1,240 @@
+﻿<Window x:Class="WindowsBootscreenSimulatorPlus.Win10"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus"
+        mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" Background="Black" KeyDown="Window_KeyDown"
+        Title="Windows 8.x/10 Bootscreen Simulator" Height="768" Width="1024" MouseDoubleClick="Window_MouseDoubleClick"
+        MouseRightButtonUp="Window_MouseRightButtonUp" Closing="Window_Closing" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Viewbox Stretch="Uniform" Name="VBox"
+    SnapsToDevicePixels="True"
+    UseLayoutRounding="True"
+    RenderOptions.EdgeMode="Aliased"
+    RenderOptions.BitmapScalingMode="NearestNeighbor">
+        <Grid Name="RootGrid" Width="1024" Height="768">
+            <Viewport3D Width="150" Height="150" Margin="5,180,0,0" VerticalAlignment="Top">
+                <Viewport3D.Camera>
+                    <PerspectiveCamera Position="-0.35 0, 3" />
+                </Viewport3D.Camera>
+                <Viewport2DVisual3D>
+                    <Viewport2DVisual3D.Transform>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <QuaternionRotation3D x:Name="rotate" Quaternion="0, 0, -0.71, 0.5" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </Viewport2DVisual3D.Transform>
+                    <Viewport2DVisual3D.Geometry>
+                        <MeshGeometry3D Positions="-1.5,1,0 -1,-2.03,0 1,-2.0,0 1.5,1.03,0"
+                                TextureCoordinates="0,0 0,1 1,1 1,0"
+                                TriangleIndices="0 1 2 0 2 3" />
+                    </Viewport2DVisual3D.Geometry>
+                    <Viewport2DVisual3D.Material>
+                        <DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True" />
+                    </Viewport2DVisual3D.Material>
+                    <Rectangle Fill="#00ccff" Width="100" Height="100"/>
+                </Viewport2DVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <AmbientLight Color="#00ccff" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+            </Viewport3D>
+            <Rectangle Fill="Black" Width="3" Height="120" Margin="-5,195,0,0" VerticalAlignment="Top"></Rectangle>
+            <Rectangle Fill="Black" Width="3" Height="140" Margin="150,255,0,0" VerticalAlignment="Top">
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="90" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Grid Width="10" Height="10" Margin="15,0,0,180" VerticalAlignment="Bottom" Name="Dot1" Visibility="Hidden">
+                <Ellipse Margin="0,0,0,-5" Width="3" Height="3" Fill="White" />
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Grid.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetName="Dot1RotateTransform"
+                                    Storyboard.TargetProperty="Angle"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="120" KeyTime="0:0:0.31"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="230" KeyTime="0:0:1.32"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="455" KeyTime="0:0:1.72"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="590" KeyTime="0:0:3.08"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:3.3"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:4.9"></EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetProperty="Opacity"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.01" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:3.3" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:3.31" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.RenderTransform>
+                    <RotateTransform x:Name="Dot1RotateTransform" Angle="0"></RotateTransform>
+                </Grid.RenderTransform>
+            </Grid>
+            <Grid Width="10" Height="10" Margin="15,0,0,180" VerticalAlignment="Bottom" Name="Dot2" Visibility="Hidden">
+                <Ellipse Margin="0,0,0,-5" Width="3" Height="3" Fill="White" />
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Grid.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetName="Dot2RotateTransform"
+                                    Storyboard.TargetProperty="Angle"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.3"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="120" KeyTime="0:0:0.61"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="230" KeyTime="0:0:1.62"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="455" KeyTime="0:0:2.02"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="590" KeyTime="0:0:3.38"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:3.6"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:4.9"></EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetProperty="Opacity"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.3" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.31" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:3.6" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:3.61" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.RenderTransform>
+                    <RotateTransform x:Name="Dot2RotateTransform" Angle="0"></RotateTransform>
+                </Grid.RenderTransform>
+            </Grid>
+            <Grid Width="10" Height="10" Margin="15,0,0,180" VerticalAlignment="Bottom" Name="Dot3" Visibility="Hidden">
+                <Ellipse Margin="0,0,0,-5" Width="3" Height="3" Fill="White" />
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Grid.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetName="Dot3RotateTransform"
+                                    Storyboard.TargetProperty="Angle"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.6"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="120" KeyTime="0:0:0.81"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="230" KeyTime="0:0:1.82"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="455" KeyTime="0:0:2.32"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="590" KeyTime="0:0:3.68"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:3.9"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:4.9"></EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetProperty="Opacity"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.6" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.61" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:3.9" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:3.91" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.RenderTransform>
+                    <RotateTransform x:Name="Dot3RotateTransform" Angle="0"></RotateTransform>
+                </Grid.RenderTransform>
+            </Grid>
+            <Grid Width="10" Height="10" Margin="15,0,0,180" VerticalAlignment="Bottom" Name="Dot4" Visibility="Hidden">
+                <Ellipse Margin="0,0,0,-5" Width="3" Height="3" Fill="White" />
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Grid.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetName="Dot4RotateTransform"
+                                    Storyboard.TargetProperty="Angle"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.9"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="120" KeyTime="0:0:1.11"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="230" KeyTime="0:0:2.02"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="455" KeyTime="0:0:2.62"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="590" KeyTime="0:0:3.98"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:4.3"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:4.9"></EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetProperty="Opacity"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.9" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.91" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:4.3" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:4.31" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.RenderTransform>
+                    <RotateTransform x:Name="Dot4RotateTransform" Angle="0"></RotateTransform>
+                </Grid.RenderTransform>
+            </Grid>
+            <Grid Width="10" Height="10" Margin="15,0,0,180" VerticalAlignment="Bottom" Name="Dot5" Visibility="Hidden">
+                <Ellipse Margin="0,0,0,-5" Width="3" Height="3" Fill="White" />
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Grid.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetName="Dot5RotateTransform"
+                                    Storyboard.TargetProperty="Angle"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="0" KeyTime="0:0:1.2"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="120" KeyTime="0:0:1.41"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="230" KeyTime="0:0:2.32"></EasingDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame Value="455" KeyTime="0:0:2.92"></LinearDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="590" KeyTime="0:0:4.28"></EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame Value="720" KeyTime="0:0:4.9"></EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames
+                                    Storyboard.TargetProperty="Opacity"
+                                    Duration="0:0:4.9"
+                                    RepeatBehavior="Forever">
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:1.2" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1.21" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:4.59" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:4.6" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.RenderTransform>
+                    <RotateTransform x:Name="Dot5RotateTransform" Angle="0"></RotateTransform>
+                </Grid.RenderTransform>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

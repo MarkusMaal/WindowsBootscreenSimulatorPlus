@@ -2,7 +2,7 @@
 Simulate various bootscreens from different Windows versions! Uses WPF as the framework with MaterialDesignInXaml for styling.
 
 ## Current functionality
-* Windows NT, 98/ME, 2000 and XP boot screen simulators
+* Windows NT, 98/ME, 2000, XP and 8.x/10 boot screen simulators
 * Ability to stretch and fullscreen that bootscreen
 * Ability to switch between server and professional bootscreens for Windows 2000
 * That's it, there's not much here right now
