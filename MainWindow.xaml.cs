@@ -15,6 +15,10 @@ namespace WindowsBootscreenSimulatorPlus
         public MainWindow()
         {
             InitializeComponent();
+            var majorVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.Major;
+            var minorVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.Minor;
+            Title = string.Format("{0} {1}.{2} {3}", Title, majorVer, minorVer, 
+                majorVer > 0 ? "release" : (int.Parse(minorVer.ToString()?[0].ToString() ?? "0") < 2 ? "pre-alpha" : (int.Parse(minorVer.ToString()?[0].ToString() ?? "0") < 5 ? "alpha" : "beta")));
         }
 
         public string[] Simulators
