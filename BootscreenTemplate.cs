@@ -119,6 +119,7 @@ namespace WindowsBootscreenSimulatorPlus
                 case Simulator.WindowsMetro:
                     w = new Win10();
                     if (w is not Win10 w10) break;
+                    w10.Win11Mode = GetBoolValue("FlatLogo");
                     w10.InitialDelay = GetIntValue("Delay");
                     break;
                 case Simulator.WindowsXPVista:

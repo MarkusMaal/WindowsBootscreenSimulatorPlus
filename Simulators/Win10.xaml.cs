@@ -10,6 +10,7 @@ namespace WindowsBootscreenSimulatorPlus
     /// </summary>
     public partial class Win10 : Window
     {
+        internal bool Win11Mode { get; set; }
         internal int InitialDelay { get; set; }
         public Win10()
         {
@@ -17,6 +18,8 @@ namespace WindowsBootscreenSimulatorPlus
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            SquareLogo.Visibility = Win11Mode ? Visibility.Visible : Visibility.Collapsed;
+            TiltLogo.Visibility = !Win11Mode ? Visibility.Visible : Visibility.Collapsed;
             new Thread(() =>
             {
                 Thread.Sleep(InitialDelay); // show dots after one animation cycle

@@ -53,7 +53,12 @@ namespace WindowsBootscreenSimulatorPlus
 
             Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.Windows7, "Windows 7"));
 
-            Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsMetro, "Windows 8.x/10/early 11"));
+            Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsMetro, "Windows 8.x/10"));
+
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsMetro, "Windows 11");
+            newTemplate.SetValue("FlatLogo", true);
+            newTemplate.HideValue("FlatLogo");
+            Templates.Add(newTemplate);
         }
 
         public string[] GetTemplates() => [.. Templates.Select(p => p.GetStringValue("FriendlyName"))];
