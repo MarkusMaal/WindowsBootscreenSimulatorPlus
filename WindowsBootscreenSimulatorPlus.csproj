@@ -8,24 +8,22 @@
     <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <UseWPF>true</UseWPF>
-	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-	<PublishSingleFile>true</PublishSingleFile>
-	<DebugSymbols>false</DebugSymbols>
-	<DebugType>None</DebugType>
-	<ApplicationIcon>Resources\logo.ico</ApplicationIcon>
-	<AssemblyVersion>0.19.0.0</AssemblyVersion>
-	<FileVersion>0.19.0.0</FileVersion>
-	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageIcon>logo.png</PackageIcon>
-	<PackageProjectUrl>https://github.com/MarkusMaal/WindowsBootScreenSimulatorPlus</PackageProjectUrl>
-	<Copyright>© 2024 - 2026  Markus Maal</Copyright>
-	<Description>A tool that lets the user simulate various bootscreens from the Microsoft Windows operating system.</Description>
-	<Title>Windows Bootscreen Simulator Plus</Title>
-	<RepositoryType>git</RepositoryType>
-	<RepositoryUrl>https://github.com/MarkusMaal/WindowsBootScreenSimulatorPlus</RepositoryUrl>
-	<AssemblyTitle>Windows Bootscreen Simulator Plus</AssemblyTitle>
-	<Company>Markuse tarkvara</Company>
+	  <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	  <PublishSingleFile>true</PublishSingleFile>
+	  <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
+	  <AssemblyVersion>0.20.0.0</AssemblyVersion>
+	  <FileVersion>0.20.0.0</FileVersion>
+	  <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageIcon>logo.png</PackageIcon>
+	  <PackageProjectUrl>https://github.com/MarkusMaal/WindowsBootScreenSimulatorPlus</PackageProjectUrl>
+	  <Copyright>© 2024 - 2026  Markus Maal</Copyright>
+	  <Description>A tool that lets the user simulate various bootscreens from the Microsoft Windows operating system.</Description>
+	  <Title>Windows Bootscreen Simulator Plus</Title>
+	  <RepositoryType>git</RepositoryType>
+	  <RepositoryUrl>https://github.com/MarkusMaal/WindowsBootScreenSimulatorPlus</RepositoryUrl>
+	  <AssemblyTitle>Windows Bootscreen Simulator Plus</AssemblyTitle>
+	  <Company>Markuse tarkvara</Company>
 
   </PropertyGroup>
 

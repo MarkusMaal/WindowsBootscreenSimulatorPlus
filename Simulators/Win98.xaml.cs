@@ -18,11 +18,12 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void AnimateBar(int time)
         {
-            DoubleAnimation da = new(0, -640, new Duration(TimeSpan.FromSeconds(time)));
+            DoubleAnimation da1 = new(0, -Slit1.ActualWidth, new Duration(TimeSpan.FromSeconds(time)));
+            DoubleAnimation da2 = new(0, -Slit2.ActualWidth, new Duration(TimeSpan.FromSeconds(time)));
 
-            StackPanel[] images = [Slit];
-            DoubleAnimation[] animations = [da];
-            TranslateTransform[] transforms = [new TranslateTransform()];
+            Image[] images = [Slit1, Slit2];
+            DoubleAnimation[] animations = [da1, da2];
+            TranslateTransform[] transforms = [new TranslateTransform(), new TranslateTransform()];
             for (int i = 0; i < images.Length; i++)
             {
                 images[i].RenderTransform = transforms[i];

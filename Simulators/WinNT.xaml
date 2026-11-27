@@ -9,10 +9,7 @@
         Title="Windows NT Bootscreen Simulator" Height="480" Width="640" MouseDoubleClick="Window_MouseDoubleClick"
         MouseRightButtonUp="Window_MouseRightButtonUp">
     <Grid>
-        <StackPanel Name="GenerateCenter" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="Collapsed">
-            <TextBlock FontSize="20" Name="GenerateCenterText" Foreground="White" Text="Generating bootscreen..."></TextBlock>
-            <ProgressBar Name="GenerateCenterBar" Margin="0,15,0,0" Maximum="100" IsIndeterminate="True" Value="0"/>
-        </StackPanel>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Name="GenerateCenterText" Foreground="White" Text="Generating bootscreen..." Visibility="Collapsed"></TextBlock>
         <Viewbox Stretch="Uniform" Name="VBox"
      SnapsToDevicePixels="True"
      UseLayoutRounding="True"

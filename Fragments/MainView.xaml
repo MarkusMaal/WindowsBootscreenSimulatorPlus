@@ -9,13 +9,7 @@
     <Grid Background="White" Name="RootGrid">
         <StackPanel>
             <ComboBox Padding="10,5" Margin="10" Name="OsList" SelectedIndex="0" ItemsSource="{Binding Simulators}" SelectionChanged="OsList_SelectionChanged" />
-            <StackPanel Orientation="Horizontal" Margin="10" >
-                <CheckBox Name="StretchBox" Content="Stretch" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0"/>
-                <CheckBox Name="FullscreenBox" Content="Fullscreen" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0"/>
-                <CheckBox Name="ServerBox" Content="Server boot screen" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0" Visibility="Collapsed"/>
-                <CheckBox Name="FadeBox" Content="Simulate fade in" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0" Visibility="Collapsed" IsChecked="True" />
-                <CheckBox Name="CursorBox" Content="Show cursor" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,10,0" IsChecked="True"/>
-            </StackPanel>
+            <StackPanel Name="TemplateConfig" Orientation="Horizontal" Margin="10" />
         </StackPanel>
         <Button Content="Simulate" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="30" Width="100" Click="Button_Click"/>
     </Grid>

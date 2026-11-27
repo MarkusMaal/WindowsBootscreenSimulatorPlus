@@ -29,158 +29,48 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Simulators = ["Windows NT 4", "Windows 98", "Windows ME", "Windows 2000", "Windows XP", "Windows Vista (logoless)", "Windows 7", "Windows 8.x/10"];
+            TemplateRegistry.InitDefaultTemplates();
+            Simulators = TemplateRegistry.GetTemplates();
+            OsSwitch();
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            var formCursor = (Mw1.CursorBox.IsChecked ?? false) ? Cursors.Arrow : Cursors.None;
-            switch (Mw1.OsList.SelectedItem.ToString())
-            {
-                case "Windows 8.x/10":
-                    Win10 wx = new()
-                    {
-                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
-                    };
-                    wx.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
-                    wx.Cursor = formCursor;
-                    wx.Show();
-                    break;
-                case "Windows XP":
-                case "Windows Vista (logoless)":
-                    var isVista = Mw1.OsList.SelectedItem.ToString()?.StartsWith("Windows Vista") ?? false;
-                    WinXP wxp = new()
-                    {
-                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal,
-                        FadeIn = Mw1.FadeBox.IsChecked ?? false,
-                        Throbber = isVista ? Properties.Resources.vista_golden_throbber : Properties.Resources.xp_blue_throbber,
-                        Graphic = isVista ? Properties.Resources.WindowsVista_RTM_Boot : Properties.Resources.Windows_XP_SP2_Boot
-                    };
-                    wxp.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
-                    wxp.Cursor = formCursor;
-                    wxp.Show();
-                    break;
-                case "Windows 98":
-                    Win98 w98 = new()
-                    {
-                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
-                    };
-                    w98.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
-                    w98.Cursor = formCursor;
-                    w98.Show();
-                    break;
-                case "Windows ME":
-                    w98 = new Win98
-                    {
-                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
-                    };
-                    w98.LogoImage.Source = GetImageResource(Properties.Resources.Windows_ME_4_90_3000_Boot);
-                    w98.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
-                    w98.Cursor = formCursor;
-                    w98.Show();
-                    break;
-                case "Windows 2000":
-                    Win2k w2k = new()
-                    {
-                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
-                    };
-                    w2k.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
-                    if (Mw1.ServerBox.IsChecked ?? false)
-                    {
-                        w2k.LogoImage.Source = GetImageResource(Properties.Resources.Windows_2000_Server);
-                        w2k.SlitA.Source = GetImageResource(Properties.Resources.slit2kserver);
-                        w2k.SlitB.Source = GetImageResource(Properties.Resources.slit2kserver);
-                        w2k.progressColor = Color.FromArgb(0xFF, 0x30, 0x30, 0x98);
-                    }
-                    Random r = new();
-                    for (int i = 0; i < 19; i++)
-                    {
-                        w2k.increments[i] = r.Next(0, 5000);
-                    }
-                    w2k.Cursor = formCursor;
-                    w2k.Show();
-                    break;
-                case "Windows NT 4":
-                    WinNT wNt = new()
-                    {
-                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
-                    };
-                    wNt.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
-                    wNt.Cursor = (Mw1.CursorBox.IsChecked ?? false) ? Cursors.Wait : Cursors.None;
-                    wNt.Show();
-                    break;
-                case "Windows 7":
-                    Win7 w7 = new()
-                    {
-                        WindowStyle = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowStyle.None : WindowStyle.SingleBorderWindow,
-                        WindowState = (Mw1.FullscreenBox.IsChecked ?? false) ? WindowState.Maximized : WindowState.Normal
-                    };
-                    w7.VBox.Stretch = (Mw1.StretchBox.IsChecked ?? false) ? Stretch.Fill : Stretch.Uniform;
-                    w7.Cursor = formCursor;
-                    w7.Show();
-                    break;
-                default:
-                    MessageBox.Show("Not implemented!", "Simulate function", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    break;
-            }
-        }
-
-        // Loads an image resource from bytes and returns a bitmap image
-        private static BitmapImage GetImageResource(byte[] data)
-        {
-            BitmapImage biImg = new();
-            MemoryStream ms = new(data);
-            biImg.BeginInit();
-            biImg.StreamSource = ms;
-            biImg.EndInit();
-            return biImg;
-        }
-
-        private void TabSwitch(object sender, RoutedEventArgs e)
-        {
-            UIMain.Visibility = Visibility.Hidden;
-            Settings.Visibility = Visibility.Hidden;
-            About.Visibility = Visibility.Hidden;
-            if (sender is MenuItem mi) {
-                switch (mi.Header)
-                {
-                    case "Simulator":
-                        UIMain.Visibility = Visibility.Visible;
-                        break;
-                    case "Settings":
-                        Settings.Visibility = Visibility.Visible;
-                        break;
-                    case "About":
-                        About.Visibility = Visibility.Visible;
-                        break;
-                }
-            }
-            //ToggleArrow.IsChecked = !ToggleArrow.IsChecked;
+            TemplateRegistry.Simulate(Mw1.OsList.SelectedIndex);
         }
 
         public void OsSwitch()
         {
-            Mw1.FadeBox.Visibility = Mw1.OsList.SelectedItem switch
+            Mw1.TemplateConfig.Children.Clear();
+            if (Mw1.OsList.SelectedIndex < 0) return;
+            var bsT = TemplateRegistry.Templates[Mw1.OsList.SelectedIndex];
+            foreach (var b in bsT.GetAllBoolKeys())
             {
-                "Windows XP" => Visibility.Visible,
-                "Windows Vista (logoless)" => Visibility.Visible,
-                _ => Visibility.Collapsed
-            };
-            Mw1.ServerBox.Visibility = Mw1.OsList.SelectedItem switch
-            {
-                "Windows 2000" => Visibility.Visible,
-                _ => Visibility.Collapsed,
-            };
+                var cb = new CheckBox()
+                {
+                    Content = b,
+                    IsChecked = bsT.GetBoolValue(b),
+                };
+                cb.Unchecked += (sender, e) =>
+                {
+                    bsT.SetValue(b, false);
+                };
+                cb.Checked += (sender, e) =>
+                {
+                    bsT.SetValue(b, true);
+                };
+                cb.Margin = new Thickness(0, 0, 10, 0);
+                Mw1.TemplateConfig.Children.Add(cb);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            App.CheckWindows();
         }
     }
 }
