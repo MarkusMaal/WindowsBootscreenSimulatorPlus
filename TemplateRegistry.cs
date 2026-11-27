@@ -1,10 +1,18 @@
-﻿namespace WindowsBootscreenSimulatorPlus
+﻿using System.Text.Json;
+
+namespace WindowsBootscreenSimulatorPlus
 {
     public class TemplateRegistry
     {
-        public static List<BootscreenTemplate> Templates { get; set; } = [];
 
-        public static void InitDefaultTemplates()
+        public TemplateRegistry()
+        {
+            InitDefaultTemplates();
+        }
+
+        public List<BootscreenTemplate> Templates { get; set; } = [];
+
+        public void InitDefaultTemplates()
         {
             Templates.Clear();
 
@@ -32,7 +40,7 @@
             newTemplate.SetValue("Throbber", Properties.Resources.xp_blue_throbber);
             Templates.Add(newTemplate);
 
-            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsXPVista, "Windows Vista");
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsXPVista, "Windows Vista (logoless)");
             newTemplate.SetValue("Graphic", Properties.Resources.WindowsVista_RTM_Boot);
             newTemplate.SetValue("Throbber", Properties.Resources.vista_golden_throbber);
             Templates.Add(newTemplate);
@@ -42,8 +50,15 @@
             Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsMetro, "Windows 8.x/10/early 11"));
         }
 
-        public static string[] GetTemplates() => [.. Templates.Select(p => p.GetStringValue("FriendlyName"))];
+        public string[] GetTemplates() => [.. Templates.Select(p => p.GetStringValue("FriendlyName"))];
 
-        public static void Simulate(int idx) => Templates[idx].Show();
+        public void Simulate(int idx) => Templates[idx].Show();
+
+        public string Serialize() => JsonSerializer.Serialize(Templates, new JsonSerializerOptions() { WriteIndented = true });
+
+        public void Deserialize(string jsonData)
+        {
+            Templates = JsonSerializer.Deserialize<List<BootscreenTemplate>>(jsonData) ?? [];
+        }
     }
 }

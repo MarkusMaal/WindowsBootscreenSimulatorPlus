@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -24,23 +21,43 @@ namespace WindowsBootscreenSimulatorPlus
             WindowsXPVista
         }
 
-        private readonly Simulator _simulator;
+        [JsonInclude]
+        private Simulator SimulatorType { get; set; }
 
+        [JsonInclude]
         private Dictionary<string, string> Strings { get; set; } = [];
 
+        [JsonInclude]
         private Dictionary<string, byte[]> Data { get; set; } = [];
 
+        [JsonInclude]
         private Dictionary<string, int> Integers { get; set; } = [];
 
+        [JsonInclude]
         private Dictionary<string, int[]> Progressors { get; set; } = [];
+
+        [JsonInclude]
         private Dictionary<string, bool> Bools { get; set; } = [];
 
+        [JsonInclude]
         private readonly List<string> HiddenValues = [];
 
+        [JsonIgnore]
+        public string Name => GetStringValue("FriendlyName");
 
+        [JsonIgnore]
+        public string Type => SimulatorType.ToString();
+
+        public BootscreenTemplate() {}
+
+        /// <summary>
+        /// Create bootscreen template object
+        /// </summary>
+        /// <param name="simulator">Simulator</param>
+        /// <param name="friendlyName">Friendly name, displayed to the user</param>
         public BootscreenTemplate(Simulator simulator, string friendlyName)
         {
-            _simulator = simulator;
+            SimulatorType = simulator;
             Strings["FriendlyName"] = friendlyName;
             InitializeSimulator();
         }
@@ -51,11 +68,11 @@ namespace WindowsBootscreenSimulatorPlus
         public void SetValue(string key, int[] value) => Progressors[key] = value;
         public void SetValue(string key, bool value) => Bools[key] = value;
 
-        public string GetStringValue(string key) => Strings[key];
-        public byte[] GetDataValue(string key) => Data[key];
-        public int GetIntValue(string key) => Integers[key];
-        public int[] GetProgressorValue(string key) => Progressors[key];
-        public bool GetBoolValue(string key) => Bools[key];
+        public string GetStringValue(string key) => Strings.TryGetValue(key, out var value) ? value : "";
+        public byte[] GetDataValue(string key) => Data.TryGetValue(key, out var value) ? value : [];
+        public int GetIntValue(string key) => Integers.TryGetValue(key, out var value) ? value : -1;
+        public int[] GetProgressorValue(string key) => Progressors.TryGetValue(key, out var value) ? value : [];
+        public bool GetBoolValue(string key) => Bools.TryGetValue(key, out var val) && val;
 
         public string[] GetAllStringKeys() => [.. Strings.Where(p => !HiddenValues.Contains(p.Key)).Select(p => p.Key)];
         public string[] GetAllDataKeys() => [.. Data.Where(p => !HiddenValues.Contains(p.Key)).Select(p => p.Key)];
@@ -63,26 +80,46 @@ namespace WindowsBootscreenSimulatorPlus
         public string[] GetAllProgressorKeys() => [.. Progressors.Where(p => !HiddenValues.Contains(p.Key)).Select(p => p.Key)];
         public string[] GetAllBoolKeys() => [.. Bools.Where(p => !HiddenValues.Contains(p.Key)).Select(p => p.Key)];
 
+        public Simulator GetSimulatorType() => SimulatorType;
+        public void SetSimulatorType(Simulator type) => SimulatorType = type;
+
         public void HideValue(string key) => HiddenValues.Add(key);
 
+        /// <summary>
+        /// Allows you to directly convert data value to BitmapImage
+        /// </summary>
+        /// <param name="key">Key of Data dictionary</param>
+        /// <returns>Two part tuple, first the BitmapImage and then the unclosed memory stream, which the receiver should close when applicable</returns>
         public (BitmapImage, MemoryStream) GetImage(string key)
         {
             var bmp = new BitmapImage();
             bmp.BeginInit();
-            var ms = new MemoryStream(Data[key]);
-            bmp.StreamSource = ms;
-            bmp.EndInit();
+            var ms = new MemoryStream();
+            try
+            {
+                ms.Write(Data[key]);
+                bmp.StreamSource = ms;
+                bmp.EndInit();
+            } catch (Exception ex)
+            {
+                Debug.WriteLine("[DEBUG] ERROR: " + ex.Message);
+            }
             return (bmp, ms);
         }
 
+        /// <summary>
+        /// Runs the simulator
+        /// </summary>
         public void Show()
         {
             var formCursor = GetBoolValue("Show cursor") ? Cursors.Arrow : Cursors.None;
             Window w = new();
-            switch (_simulator)
+            switch (SimulatorType)
             {
                 case Simulator.WindowsMetro:
                     w = new Win10();
+                    if (w is not Win10 w10) break;
+                    w10.InitialDelay = GetIntValue("Delay");
                     break;
                 case Simulator.WindowsXPVista:
                     w = new WinXP()
@@ -142,12 +179,15 @@ namespace WindowsBootscreenSimulatorPlus
             w.Show();
         }
 
+        /// <summary>
+        /// Intialize simulator with default values
+        /// </summary>
         private void InitializeSimulator()
         {
             SetValue("Stretch", false);
             SetValue("Fullscreen", false);
             SetValue("Show cursor", true);
-            switch (_simulator)
+            switch (SimulatorType)
             {
                 case Simulator.WindowsMetro:
                     SetValue("Delay", 4900);
@@ -157,7 +197,7 @@ namespace WindowsBootscreenSimulatorPlus
                     SetValue("Server boot screen", false);
                     break;
                 case Simulator.WindowsXPVista:
-                    SetValue("Simulate fade-in", false);
+                    SetValue("Simulate fade-in", true);
                     break;
             }
         }

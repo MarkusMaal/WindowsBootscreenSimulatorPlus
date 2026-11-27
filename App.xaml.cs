@@ -8,6 +8,7 @@ namespace WindowsBootscreenSimulatorPlus
     /// </summary>
     public partial class App : Application
     {
+        public TemplateRegistry TemplateRegistry = new();
         /// <summary>
         /// Terminates the app if every window is closed (i.e. kills orphaned threads).
         /// This ensures the application doesn't stay running in the background.

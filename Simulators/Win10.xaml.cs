@@ -10,6 +10,7 @@ namespace WindowsBootscreenSimulatorPlus
     /// </summary>
     public partial class Win10 : Window
     {
+        internal int InitialDelay { get; set; }
         public Win10()
         {
             InitializeComponent();
@@ -18,7 +19,7 @@ namespace WindowsBootscreenSimulatorPlus
         {
             new Thread(() =>
             {
-                Thread.Sleep(4900); // show dots after one animation cycle
+                Thread.Sleep(InitialDelay); // show dots after one animation cycle
                 try
                 {
                     Dispatcher.Invoke(() =>

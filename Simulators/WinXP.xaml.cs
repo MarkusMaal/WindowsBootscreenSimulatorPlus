@@ -71,9 +71,15 @@ namespace WindowsBootscreenSimulatorPlus
             var ms = new MemoryStream(Graphic);
             var bmp = new BitmapImage();
             bmp.BeginInit();
-            bmp.StreamSource = ms;
-            bmp.EndInit();
-            BottomLoader.Background = new ImageBrush(bmp);
+            try
+            {
+                bmp.StreamSource = ms;
+                bmp.EndInit();
+                BottomLoader.Background = new ImageBrush(bmp);
+            } catch
+            {
+                BottomLoader.Background = new ImageBrush(BitmapSource.Create(8, 9, 1.0, 1.0, PixelFormats.Rgb24, null, new byte[8 * 9 * 3], 8 * 3));
+            }
             new Thread(() =>
             {
                 try
@@ -105,19 +111,34 @@ namespace WindowsBootscreenSimulatorPlus
             }).Start();
         }
 
-        private static Image GetCroppedImageResource(byte[] data, Int32Rect crop)
+        private static Image? GetCroppedImageResource(byte[] data, Int32Rect crop)
         {
             BitmapImage biImg = new();
             MemoryStream ms = new(data);
 
-            biImg.BeginInit();
-            biImg.StreamSource = ms;
-            biImg.EndInit();
-            Image cropped = new()
+            try
             {
-                Source = CropBitmapImage(biImg, crop)
-            };
-            return cropped;
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+                Image cropped = new()
+                {
+                    Source = CropBitmapImage(biImg, crop)
+                };
+                return cropped;
+            } catch
+            {
+                byte[] pixels = new byte[8 * 9 * 3];
+                for (int i = 0; i < 8 * 9 * 3; i+=3)
+                {
+                    pixels[i] = 255;
+                    pixels[i+1] = 0;
+                    pixels[i+2] = 255;
+                }
+                var bmp = BitmapSource.Create(8, 9, 1.0, 1.0, PixelFormats.Rgb24, null, pixels.ToArray(), 8 * 3);
+                
+                return new Image() { Source = bmp };
+            }
         }
 
         public static CroppedBitmap CropBitmapImage(BitmapImage source, Int32Rect cropArea)
