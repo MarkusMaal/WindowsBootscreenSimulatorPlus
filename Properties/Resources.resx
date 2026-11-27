@@ -169,4 +169,10 @@
     <value>..\Resources\WindowsVista-RTM-Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>Windows Vista bootscreen</comment>
   </data>
+  <data name="Win95Boot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Win95Boot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="slit95" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slit95.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

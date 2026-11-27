@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace WindowsBootscreenSimulatorPlus
 {
@@ -11,6 +10,8 @@ namespace WindowsBootscreenSimulatorPlus
     /// </summary>
     public partial class Win98 : Window
     {
+        internal bool Win95Mode { get; init; }
+
         public Win98()
         {
             InitializeComponent();
@@ -18,21 +19,22 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void AnimateBar(int time)
         {
-            DoubleAnimation da1 = new(0, -Slit1.ActualWidth, new Duration(TimeSpan.FromSeconds(time)));
-            DoubleAnimation da2 = new(0, -Slit2.ActualWidth, new Duration(TimeSpan.FromSeconds(time)));
-
-            Image[] images = [Slit1, Slit2];
-            DoubleAnimation[] animations = [da1, da2];
-            TranslateTransform[] transforms = [new TranslateTransform(), new TranslateTransform()];
-            for (int i = 0; i < images.Length; i++)
+            var shift = Win95Mode ? 0 : -640;
+            new Thread(() =>
             {
-                images[i].RenderTransform = transforms[i];
-                images[i].RenderTransformOrigin = new Point(0, 0);
-                animations[i].RepeatBehavior = RepeatBehavior.Forever;
-            }
-            for (int i = 0; i < images.Length; i++) {
-                transforms[i].BeginAnimation(TranslateTransform.XProperty, animations[i]);
-            }
+                while (true)
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        Slit1.RenderTransform = new TranslateTransform(shift, 0);
+                        Slit2.RenderTransform = new TranslateTransform(shift, 0);
+                        shift += Win95Mode ? -32 : 32;
+                        if (shift > 0 && !Win95Mode) shift = -640;
+                        if (shift < -640 && Win95Mode) shift = 0;
+                    });
+                    Thread.Sleep(100);
+                }
+            }).Start();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

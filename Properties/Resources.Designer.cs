@@ -132,9 +132,29 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] slit95 {
+            get {
+                object obj = ResourceManager.GetObject("slit95", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] vista_golden_throbber {
             get {
                 object obj = ResourceManager.GetObject("vista_golden_throbber", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Win95Boot {
+            get {
+                object obj = ResourceManager.GetObject("Win95Boot", resourceCulture);
                 return ((byte[])(obj));
             }
         }

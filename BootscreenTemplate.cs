@@ -130,11 +130,22 @@ namespace WindowsBootscreenSimulatorPlus
                     };
                     break;
                 case Simulator.Windows9x:
-                    w = new Win98();
+                    w = new Win98()
+                    {
+                        Win95Mode = GetBoolValue("Invert")
+                    };
                     var (graphic, ms) = GetImage("Graphic");
+                    var (slit, mss) = GetImage("Slit");
+
                     if (w is not Win98 w98) break;
                     w98.LogoImage.Source = graphic;
-                    w98.Closed += (_, _) => ms.Close();
+                    w98.Slit1.Source = slit;
+                    w98.Slit2.Source = slit;
+                    w98.Closed += (_, _) =>
+                    {
+                        ms.Close();
+                        mss.Close();
+                    };
                     break;
                 case Simulator.Windows2000:
                     w = new Win2k();
@@ -145,9 +156,9 @@ namespace WindowsBootscreenSimulatorPlus
                     var (w2ks, ms4) = GetImage("Slit");
                     if (GetBoolValue("Server boot screen"))
                     {
-                        w2k.LogoImage.Source = w2kg;
-                        w2k.SlitA.Source = w2ks;
-                        w2k.SlitB.Source = w2ks;
+                        w2k.LogoImage.Source = w2kgs;
+                        w2k.SlitA.Source = w2kss;
+                        w2k.SlitB.Source = w2kss;
                         w2k.progressColor = Color.FromArgb(0xFF, 0x30, 0x30, 0x98);
                     }
                     Random r = new();
@@ -198,6 +209,9 @@ namespace WindowsBootscreenSimulatorPlus
                     break;
                 case Simulator.WindowsXPVista:
                     SetValue("Simulate fade-in", true);
+                    break;
+                case Simulator.Windows9x:
+                    HideValue("Invert");
                     break;
             }
         }

@@ -16,9 +16,15 @@ namespace WindowsBootscreenSimulatorPlus
         {
             Templates.Clear();
 
+            var newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows9x, "Windows 95");
+            newTemplate.SetValue("Graphic", Properties.Resources.Win95Boot);
+            newTemplate.SetValue("Slit", Properties.Resources.slit95);
+            newTemplate.SetValue("Invert", true);
+            Templates.Add(newTemplate);
+
             Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsNT, "Windows NT 4"));
 
-            var newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows9x, "Windows 98");
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows9x, "Windows 98");
             newTemplate.SetValue("Graphic", Properties.Resources.Windows_98_4_10_1998_Boot);
             newTemplate.SetValue("Slit", Properties.Resources.slit);
             Templates.Add(newTemplate);

@@ -57,6 +57,7 @@ namespace WindowsBootscreenSimulatorPlus
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Mw1.OsList.SelectedIndex == -1) return;
             ((App)Application.Current).TemplateRegistry.Simulate(Mw1.OsList.SelectedIndex);
         }
 

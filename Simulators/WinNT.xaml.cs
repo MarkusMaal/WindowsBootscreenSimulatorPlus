@@ -44,13 +44,14 @@ namespace WindowsBootscreenSimulatorPlus
                     $"1 System Processor [{memKb / 1024} MB Memory]"
                 ];
                 var finished = 0;
-                for (int t = 0; t < Environment.ProcessorCount; t++)
+                var threadCnt = Math.Max(Environment.ProcessorCount, 4); // a lot of threads can be slower in some cases, 4 threads seems to be a good balance
+                for (int t = 0; t < threadCnt; t++)
                 {
                     new Thread(() =>
                     {
                         for (int i = 0; i < 640 * 480 * 3; i += 3)
                         {
-                            if ((i / 3) % Environment.ProcessorCount == t) continue;
+                            if ((i / 3) % threadCnt == t) continue;
                             var rawPixelIdx = (i / 3);
                             var offsetX = (rawPixelIdx % 640);
                             var offsetY = (rawPixelIdx / 640);
@@ -68,11 +69,12 @@ namespace WindowsBootscreenSimulatorPlus
                                 pixels[i + 1] = foreground.G;
                                 pixels[i + 2] = foreground.B;
                             }
+                            if (t == 1) Thread.Sleep(10);
                         }
                         finished++;
                     }).Start();
                 }
-                while (finished < Environment.ProcessorCount)
+                while (finished < threadCnt)
                 {
                     Thread.Sleep(16);
                 }
@@ -102,45 +104,45 @@ namespace WindowsBootscreenSimulatorPlus
                 try
                 {
                     if (letterCache.TryGetValue(letter, out bool[,]? value1)) return value1;
-                    break;
+                    char originalLetter = letter;
+                    char[] charset = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:,.+*()[]{}/\\-_".ToCharArray();
+                    var rawChars = Properties.Resources.NtChars;
+                    bool[,] output = new bool[8,8];
+                    var offset = 0;
+                    var lowerCase = char.IsLower(letter);
+            
+                    letter = char.ToUpper(letter);
+                    var found = false;
+                    for (int i = 0; i < charset.Length; i++)
+                    {
+                        if (charset[i] == letter)
+                        {
+                            found = true;
+                            offset = i;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        offset = 0;
+                        lowerCase = true;
+                    }
+                    for (int i = offset * 8; i < offset * 8 + 8; i++)
+                    {
+                        for (int j = 0; j < 8; j++)
+                        {
+                            output[i - offset * 8, j] = rawChars.Split(Environment.NewLine)[i][j + (lowerCase ? 8 : 0)] == '#';
+                        }
+                    }
+                    letterCache[originalLetter] = output;
+                    return output;
                 }
                 catch (InvalidOperationException)
                 {
-                    Thread.Sleep(1);
+                    Random r = new();
+                    Thread.Sleep(r.Next(5, 200));
                 }
             }
-            char originalLetter = letter;
-            char[] charset = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:,.+*()[]{}/\\-_".ToCharArray();
-            var rawChars = Properties.Resources.NtChars;
-            bool[,] output = new bool[8,8];
-            var offset = 0;
-            var lowerCase = char.IsLower(letter);
-            
-            letter = char.ToUpper(letter);
-            var found = false;
-            for (int i = 0; i < charset.Length; i++)
-            {
-                if (charset[i] == letter)
-                {
-                    found = true;
-                    offset = i;
-                    break;
-                }
-            }
-            if (!found)
-            {
-                offset = 0;
-                lowerCase = true;
-            }
-            for (int i = offset * 8; i < offset * 8 + 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    output[i - offset * 8, j] = rawChars.Split(Environment.NewLine)[i][j + (lowerCase ? 8 : 0)] == '#';
-                }
-            }
-            letterCache[originalLetter] = output;
-            return output;
         }
     }
 }
