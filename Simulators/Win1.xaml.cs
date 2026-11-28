@@ -22,22 +22,34 @@ namespace WindowsBootscreenSimulatorPlus.Simulators
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var bgCol = ((SolidColorBrush)Background).Color;
+            var fgCol = ((SolidColorBrush)Foreground).Color;
+            Background = new SolidColorBrush(Colors.Black);
             new Thread(() =>
             {
+                Thread.Sleep(128);
                 for (int i = 0; i < 8; i++)
                 {
                     Dispatcher.Invoke(() => InterleaveLogo(i));
                     Thread.Sleep(64);
                 }
             }).Start();
-            string[] lines = [OSName, Version];
-            var bgCol = ((SolidColorBrush)Background).Color;
-            var fgCol = ((SolidColorBrush)Foreground).Color;
-            CenterText.Source = WbssCommon.DrawCharacters(bgCol, fgCol, lines, 8 * lines[0].Length, lines.Length * 8);
-            CenterText.Width = lines[0].Length * 4;
-            lines = [Copyright, Trademark];
-            BottomText.Source = WbssCommon.DrawCharacters(bgCol, fgCol, lines, 8 * lines[0].Length, lines.Length * 8);
-            BottomText.Width = lines[0].Length * 4;
+            new Thread(() =>
+            {
+                Thread.Sleep(128);
+                Dispatcher.Invoke(() =>
+                {
+                    string[] lines = [OSName, Version];
+                    var centerText = WbssCommon.DrawCharacters(bgCol, fgCol, lines, 8 * lines[0].Length, lines.Length * 8);
+                    CenterText.Source = centerText;
+                    CenterText.Width = lines[0].Length * 4;
+                    lines = [Copyright, Trademark];
+                    var bottomText = WbssCommon.DrawCharacters(bgCol, fgCol, lines, 8 * lines[0].Length, lines.Length * 8);
+                    BottomText.Source = bottomText;
+                    BottomText.Width = lines[0].Length * 4;
+                    Background = new SolidColorBrush(bgCol);
+                });
+            }).Start();
         }
 
         private void InterleaveLogo(int shift)

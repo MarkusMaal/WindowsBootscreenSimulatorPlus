@@ -19,7 +19,8 @@ namespace WindowsBootscreenSimulatorPlus
             Windows9x,
             WindowsNT,
             WindowsXPVista,
-            Windows1to2
+            Windows1to2,
+            Windows3
         }
 
         [JsonInclude]
@@ -184,18 +185,30 @@ namespace WindowsBootscreenSimulatorPlus
                     };
                     break;
                 case Simulator.Windows7:
-                    w = new Win7();
+                    w = new Win7()
+                    {
+                        Graphic = GetDataValue("Graphic")
+                    };
                     break;
                 case Simulator.Windows1to2:
                     w = new Simulators.Win1()
                     {
-                        LogoData = GetDataValue("Graphic"),
+                        LogoData = GetDataValue("Logo"),
                         OSName = GetStringValue("Operating system"),
                         Version = GetStringValue("Version"),
                         Copyright = GetStringValue("Copyright"),
                         Trademark = GetStringValue("Trademark"),
                     };
-                    break; 
+                    break;
+                case Simulator.Windows3:
+                    w = new Simulators.Win3()
+                    {
+                        OS = GetStringValue("Operating system"),
+                        Version = GetStringValue("Version"),
+                        Copyright = GetStringValue("Copyright"),
+                        Graphic = GetDataValue("Graphic")
+                    };
+                    break;
             }
             w.WindowStyle = GetBoolValue("Fullscreen") ? WindowStyle.None : WindowStyle.SingleBorderWindow;
             w.WindowState = GetBoolValue("Fullscreen") ? WindowState.Maximized : WindowState.Normal;

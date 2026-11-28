@@ -63,9 +63,9 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] activity {
+        public static byte[] activity_compressed {
             get {
-                object obj = ResourceManager.GetObject("activity", resourceCulture);
+                object obj = ResourceManager.GetObject("activity_compressed", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -96,6 +96,16 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         public static byte[] Msft2 {
             get {
                 object obj = ResourceManager.GetObject("Msft2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Msft3 {
+            get {
+                object obj = ResourceManager.GetObject("Msft3", resourceCulture);
                 return ((byte[])(obj));
             }
         }

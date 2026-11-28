@@ -158,10 +158,6 @@
     <value>..\Resources\NtChars.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
     <comment>Windows NT bootscreen character set</comment>
   </data>
-  <data name="activity" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\activity.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    <comment>Windows 7 boot animation</comment>
-  </data>
   <data name="vista_golden_throbber" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vista_golden_throbber.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -182,5 +178,12 @@
   <data name="Msft2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Msft2.dat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>Windows 2.x boot logo data</comment>
+  </data>
+  <data name="Msft3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Msft3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="activity_compressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\activity_compressed.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Windows 7 boot animation (compressed)</comment>
   </data>
 </root>

@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WindowsBootscreenSimulatorPlus
 {
@@ -20,6 +10,7 @@ namespace WindowsBootscreenSimulatorPlus
     /// </summary>
     public partial class Win7 : Window
     {
+        public required byte[] Graphic { get; init; }
         bool terminate = false;
         public Win7()
         {
@@ -34,7 +25,7 @@ namespace WindowsBootscreenSimulatorPlus
         {
             var loopPoint = 60;
             var delay = 80;
-            var ms = new MemoryStream(Properties.Resources.activity);
+            var ms = new MemoryStream(Graphic);
             var animationBitmap = new BitmapImage();
             CroppedBitmap?[] frames = new CroppedBitmap?[105];
             new Thread(() =>
@@ -50,7 +41,13 @@ namespace WindowsBootscreenSimulatorPlus
                         animationBitmap.EndInit();
                         for (int i = 0; i < 105; i++)
                         {
-                            frames[i] = new(animationBitmap, new Int32Rect(0, 200 * i, 200, 200));
+                            try
+                            {
+                                frames[i] = new(animationBitmap, new Int32Rect(0, 200 * i, 200, 200));
+                            } catch (ArgumentException)
+                            {
+                                continue;
+                            }
                         }
                     });
                 }

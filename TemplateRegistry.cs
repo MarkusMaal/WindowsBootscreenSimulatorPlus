@@ -17,7 +17,7 @@ namespace WindowsBootscreenSimulatorPlus
             Templates.Clear();
 
             var newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows1to2, "Windows 1.x");
-            newTemplate.SetValue("Graphic", Properties.Resources.Msft1);
+            newTemplate.SetValue("Logo", Properties.Resources.Msft1);
             newTemplate.SetValue("Operating system", "Microsoft Windows");
             newTemplate.SetValue("Version", "  Version 1.01");
             newTemplate.SetValue("Copyright", "Copyright (c) Microsoft Corporation, 1985. All Rights Reserved.");
@@ -25,11 +25,18 @@ namespace WindowsBootscreenSimulatorPlus
             Templates.Add(newTemplate);
 
             newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows1to2, "Windows 2.x");
-            newTemplate.SetValue("Graphic", Properties.Resources.Msft2);
+            newTemplate.SetValue("Logo", Properties.Resources.Msft2);
             newTemplate.SetValue("Operating system", "Microsoft Windows");
             newTemplate.SetValue("Version", "   Version 2.03");
             newTemplate.SetValue("Copyright", "Copyright (c) Microsoft Corporation, 1987. All Rights Reserved.");
             newTemplate.SetValue("Trademark", "     Microsoft is a registered trademark of Microsoft Corp.");
+            Templates.Add(newTemplate);
+
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows3, "Windows 3.0");
+            newTemplate.SetValue("Graphic", Properties.Resources.Msft3);
+            newTemplate.SetValue("Operating system", "Windows");
+            newTemplate.SetValue("Version", "Version 3.0");
+            newTemplate.SetValue("Copyright", "Copyright © Microsoft Corporation 1985-1990. All Rights Reserved.");
             Templates.Add(newTemplate);
 
             newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows9x, "Windows 95");
@@ -70,7 +77,9 @@ namespace WindowsBootscreenSimulatorPlus
             newTemplate.SetValue("Throbber", Properties.Resources.vista_golden_throbber);
             Templates.Add(newTemplate);
 
-            Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.Windows7, "Windows 7"));
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows7, "Windows 7");
+            newTemplate.SetValue("Graphic", Properties.Resources.activity_compressed);
+            Templates.Add(newTemplate);
 
             Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsMetro, "Windows 8.x/10"));
 

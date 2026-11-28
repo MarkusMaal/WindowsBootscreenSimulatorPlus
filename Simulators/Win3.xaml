@@ -1,0 +1,31 @@
+﻿<Window x:Class="WindowsBootscreenSimulatorPlus.Simulators.Win3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsBootscreenSimulatorPlus.Simulators"
+        mc:Ignorable="d"  DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Background="Black"
+        MouseRightButtonUp="Window_MouseRightButtonUp" MouseDoubleClick="Window_MouseDoubleClick" KeyDown="Window_KeyDown"
+        Title="Windows 3.1 bootscreen simulator" Height="480" Width="640" Loaded="Window_Loaded">
+    <Viewbox d:Stretch="Fill" Name="VBox"
+       SnapsToDevicePixels="True"
+       UseLayoutRounding="True"
+       RenderOptions.EdgeMode="Aliased"
+       RenderOptions.BitmapScalingMode="NearestNeighbor">
+        <Grid Width="640" Height="480" Name="RootGrid" Background="#000">
+            <TextBlock Name="CenterText" FontFamily="Times New Roman" FontSize="48" Foreground="White" d:Text="Windows"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,30" RenderOptions.EdgeMode="Aliased">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="0" Direction="0"  Color="LightGray" ShadowDepth="1.5"></DropShadowEffect>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock Name="VersionText" FontFamily="Times New Roman" Foreground="White" FontSize="18"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,60,0,0" d:Text="Version 3.0"></TextBlock>
+            <Label FontFamily="Times New Roman" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,0,0,50">™</Label>
+            <Label Name="BottomText" FontFamily="Times New Roman" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" FontSize="13" d:Content="Copyright Microsoft Corporation 1985-1990. All Rights Reserved."></Label>
+            <Image Name="MsftLogo" Width="617" Height="97" Margin="3,5,0,0"  Source="/Resources/Msft3.png" HorizontalAlignment="Left" VerticalAlignment="Top"></Image>
+            <Label FontSize="14" FontFamily="Arial" Margin="0,23" HorizontalAlignment="Right" VerticalAlignment="Top">®</Label>
+        </Grid>
+    </Viewbox>
+</Window>
