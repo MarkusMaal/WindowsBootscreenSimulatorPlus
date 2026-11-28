@@ -18,7 +18,8 @@ namespace WindowsBootscreenSimulatorPlus
             Windows7,
             Windows9x,
             WindowsNT,
-            WindowsXPVista
+            WindowsXPVista,
+            Windows1to2
         }
 
         [JsonInclude]
@@ -176,11 +177,25 @@ namespace WindowsBootscreenSimulatorPlus
                     };
                     break;
                 case Simulator.WindowsNT:
-                    w = new WinNT();
+                    w = new WinNT()
+                    {
+                        OsInfo = GetStringValue("OS information"),
+                        HardInfo = GetStringValue("Computer information"),
+                    };
                     break;
                 case Simulator.Windows7:
                     w = new Win7();
                     break;
+                case Simulator.Windows1to2:
+                    w = new Simulators.Win1()
+                    {
+                        LogoData = GetDataValue("Graphic"),
+                        OSName = GetStringValue("Operating system"),
+                        Version = GetStringValue("Version"),
+                        Copyright = GetStringValue("Copyright"),
+                        Trademark = GetStringValue("Trademark"),
+                    };
+                    break; 
             }
             w.WindowStyle = GetBoolValue("Fullscreen") ? WindowStyle.None : WindowStyle.SingleBorderWindow;
             w.WindowState = GetBoolValue("Fullscreen") ? WindowState.Maximized : WindowState.Normal;
@@ -214,7 +229,11 @@ namespace WindowsBootscreenSimulatorPlus
                 case Simulator.Windows9x:
                     HideValue("Invert");
                     break;
+                case Simulator.Windows1to2:
+                    SetValue("Stretch", true);
+                    break;
             }
+            HideValue("FriendlyName");
         }
     }
 }

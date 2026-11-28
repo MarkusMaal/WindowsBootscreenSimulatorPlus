@@ -81,6 +81,26 @@ namespace WindowsBootscreenSimulatorPlus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Msft1 {
+            get {
+                object obj = ResourceManager.GetObject("Msft1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Msft2 {
+            get {
+                object obj = ResourceManager.GetObject("Msft2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ................ Raster font for the text on the Windows NT boot screen (converted to pixels at runtime)
         ///.........######. Any character past the . symbols is treated as a comment
         ///.........#....#. 

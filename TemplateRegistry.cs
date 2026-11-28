@@ -16,13 +16,32 @@ namespace WindowsBootscreenSimulatorPlus
         {
             Templates.Clear();
 
-            var newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows9x, "Windows 95");
+            var newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows1to2, "Windows 1.x");
+            newTemplate.SetValue("Graphic", Properties.Resources.Msft1);
+            newTemplate.SetValue("Operating system", "Microsoft Windows");
+            newTemplate.SetValue("Version", "  Version 1.01");
+            newTemplate.SetValue("Copyright", "Copyright (c) Microsoft Corporation, 1985. All Rights Reserved.");
+            newTemplate.SetValue("Trademark", "     Microsoft is a registered trademark of Microsoft Corp.");
+            Templates.Add(newTemplate);
+
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows1to2, "Windows 2.x");
+            newTemplate.SetValue("Graphic", Properties.Resources.Msft2);
+            newTemplate.SetValue("Operating system", "Microsoft Windows");
+            newTemplate.SetValue("Version", "   Version 2.03");
+            newTemplate.SetValue("Copyright", "Copyright (c) Microsoft Corporation, 1987. All Rights Reserved.");
+            newTemplate.SetValue("Trademark", "     Microsoft is a registered trademark of Microsoft Corp.");
+            Templates.Add(newTemplate);
+
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows9x, "Windows 95");
             newTemplate.SetValue("Graphic", Properties.Resources.Win95Boot);
             newTemplate.SetValue("Slit", Properties.Resources.slit95);
             newTemplate.SetValue("Invert", true);
             Templates.Add(newTemplate);
 
-            Templates.Add(new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsNT, "Windows NT 4"));
+            newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.WindowsNT, "Windows NT 4");
+            newTemplate.SetValue("OS information", "Microsoft (R) Windows NT (TM) Version 4.0 (Build 1381: Service Pack 4).");
+            newTemplate.SetValue("Computer information", "1 System Processor [{0} MB Memory]");
+            Templates.Add(newTemplate);
 
             newTemplate = new BootscreenTemplate(BootscreenTemplate.Simulator.Windows9x, "Windows 98");
             newTemplate.SetValue("Graphic", Properties.Resources.Windows_98_4_10_1998_Boot);

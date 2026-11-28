@@ -19,7 +19,7 @@ namespace WindowsBootscreenSimulatorPlus
 
         private void AnimateBar(int time)
         {
-            var shift = Win95Mode ? 0 : -640;
+            var shift = Win95Mode ? 0 : -618;
             new Thread(() =>
             {
                 while (true)
@@ -29,8 +29,8 @@ namespace WindowsBootscreenSimulatorPlus
                         Slit1.RenderTransform = new TranslateTransform(shift, 0);
                         Slit2.RenderTransform = new TranslateTransform(shift, 0);
                         shift += Win95Mode ? -32 : 32;
-                        if (shift > 0 && !Win95Mode) shift = -640;
-                        if (shift < -640 && Win95Mode) shift = 0;
+                        if (shift > 0 && !Win95Mode) shift = -618;
+                        if (shift < -618 && Win95Mode) shift = 0;
                     });
                     Thread.Sleep(100);
                 }

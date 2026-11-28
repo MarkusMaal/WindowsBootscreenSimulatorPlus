@@ -175,4 +175,12 @@
   <data name="slit95" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\slit95.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Msft1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Msft1.dat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Windows 1.0 boot logo data</comment>
+  </data>
+  <data name="Msft2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Msft2.dat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Windows 2.x boot logo data</comment>
+  </data>
 </root>

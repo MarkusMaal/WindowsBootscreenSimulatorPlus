@@ -64,6 +64,7 @@ namespace WindowsBootscreenSimulatorPlus
         public void OsSwitch()
         {
             Mw1.TemplateConfig.Children.Clear();
+            Mw1.TemplateStrings.Children.Clear();
             if (Mw1.OsList.SelectedIndex < 0) return;
             var bsT = ((App)Application.Current).TemplateRegistry.Templates[Mw1.OsList.SelectedIndex];
             foreach (var b in bsT.GetAllBoolKeys())
@@ -83,6 +84,36 @@ namespace WindowsBootscreenSimulatorPlus
                 };
                 cb.Margin = new Thickness(0, 0, 10, 0);
                 Mw1.TemplateConfig.Children.Add(cb);
+            }
+
+            foreach (var s in bsT.GetAllStringKeys())
+            {
+                var sp = new Grid()
+                {
+                    Margin = new Thickness(10),
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                };
+                sp.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                sp.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                var lbl = new Label()
+                {
+                    Content = s,
+                };
+                lbl.SetValue(Grid.RowProperty, 0);
+                sp.Children.Add(lbl);
+                var txt = new TextBox()
+                {
+                    Text = bsT.GetStringValue(s),
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Margin = new Thickness(5, 0, 5, 0)
+                };
+                txt.TextChanged += (sender, e) =>
+                {
+                    bsT.SetValue(s, txt.Text);
+                };
+                txt.SetValue(Grid.RowProperty, 1);
+                sp.Children.Add(txt);
+                Mw1.TemplateStrings.Children.Add(sp);
             }
         }
 
